@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WON</title>
+    <link rel="stylesheet" href="src/style/reset.css" />
+    <link rel="stylesheet" href="src/style/vars.css" />
+    <link rel="stylesheet" href="src/style/desktop.css" />
+    <link rel="stylesheet" href="src/style/startBar.css" />
+    <link rel="stylesheet" href="src/style/main.css" />
+    <link rel="stylesheet" href="src/style/window/windowTopBar.css" />
+    <link rel="stylesheet" href="src/style/window/window.css">
+
+    <link rel="stylesheet" href="src/tester.css">
+  </head>
+  <body>
+    <div id="main">
+      hi
+      <div id="desktop">
+        <!-- window -->
+        <div class="window" id="exampleApp1">
+          <div class="windowTopBar">
+            <div class="windowTopBarLeft">
+              <div class="windowAppIcon">#</div>
+            </div>
+            <div class="windowTopTitleBar">title</div>
+            <div class="windowTopBarRight">
+              <button class="minimizeWindow">-</button>
+              <button class="resizeWindow">O</button>
+              <button class="closeWindow">x</button>
+            </div>
+          </div>
+          <div class="windowContent">
+            <!-- <div>56</div> -->
+            <iframe src="src/apps/example/index.html" frameborder="0" class="windowPage"></iframe>
+          </div>
+        </div>
+        <!-- /window -->
+      </div>
+      <div id="startBar">
+        <div id="startButton"></div>
+        <div id="startMenu">
+          <div id="apps"></div>
+          <div id="other"></div>
+        </div>
+        <div id="appsBar"></div>
+        <div id="leftBar"></div>
+      </div>
+    </div>
+    <script src="src/index.js" type="module"></script>
+  </body>
+</html>
