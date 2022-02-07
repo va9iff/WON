@@ -7,7 +7,6 @@ window.k = new Window()
 k.makeWindowElement()
 let n = new Window()
 n.makeWindowElement()
-n.TOP.style.setProperty('--x',180+'px')
 
 
-new Window().makeWindowElement()
+new Window().makeWindowElement(50,60)
