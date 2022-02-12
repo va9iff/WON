@@ -7,7 +7,7 @@ let el = (t, c) => {
 export class Window {
   static ALL = [] // !SHOULD be re assigned in extendeds
   static NAM = "exampleApp"
-  static SRC = ""
+  static SRC = "src/apps/example/index.html"
   x = 80
   y = 80
   constructor() {

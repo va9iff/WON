@@ -1,11 +1,22 @@
 .window{
     border: 2px solid #222;
-    border-radius: 13px;
+    border-radius: var(--window-border);
     position: absolute;
     left: var(--x);
     top: var(--y);
-    width: var(--sx);
-    height: var(--sy);
+    /* width: var(--sx); */
+    /* height: var(--sy); */
+    /* for resize, we need to specify overflow */
+    overflow: scroll;
+    /* overflow: hidden; */
+    resize: both;
+
+    /* width: 100px; */
+    /* height: 100px; */
+    
+
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -13,12 +24,20 @@
     background-color: #f3f2;
     height: calc(var(--sy) - var(--topBarThickness) - 4px);
     width: calc(var(--sx) - 4px);
+    
+    flex: 1;
+    display: flex;
 }
 
 .windowPage{
     overflow: scroll;
     width: 100%;
-    height: 100%;
+
+    /* width: 100%; */
+    /* height: 100%; */
+
+    
+    
     /* background-color: red; */
     /* height: inherit; */
     /* background-color: red; */
