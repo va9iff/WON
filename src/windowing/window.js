@@ -61,11 +61,13 @@ export class Window {
     this.startY = e.clientY
     document.onmouseup = e => this.stopDragging(e)
     document.onmousemove = e => this.drag(e)
+    document.documentElement.style.setProperty("--iframe-pointer-event", 'none')
   }
   stopDragging(e) {
     // stop moving when mouse button is released:
     document.onmouseup = null
     document.onmousemove = null
+    document.documentElement.style.setProperty("--iframe-pointer-event", 'auto')
   }
   drag(e) {
     e = e || window.event

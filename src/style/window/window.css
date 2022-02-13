@@ -33,6 +33,8 @@
     overflow: scroll;
     width: 100%;
 
+    pointer-events: var(--iframe-pointer-event);
+
     /* width: 100%; */
     /* height: 100%; */
 
