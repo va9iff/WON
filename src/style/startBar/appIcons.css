@@ -1,0 +1,58 @@
+#appsBar{
+    display: flex;
+    gap: 0;
+    /* flex-direction: row; */
+    /* border: 2px solid #444; */
+}
+
+.startBarAppIcon{
+    background-color: #f008;
+    border: 2px solid #444;
+    height: 100%;
+    width: var(--startbar-height);
+}
+
+.appsBarContainer{
+    /* display: flex; */
+    position: absolute;
+    left: 0.5rem;
+    width: calc(100% - 1rem);
+    justify-content: center;
+    display: none;
+    flex-direction: row;
+    background-color: #444;
+    animation-fill-mode: forwards;
+    transform-origin: top left;
+    transition-duration: 1000ms;
+    gap: 1rem;
+}
+
+.appsBarContainer > .appPreview{
+    background-color: #dc143c;
+    height: var(--app-preview-size);
+    width: var(--app-preview-size);
+}
+
+.startBarAppIcon:hover > .appsBarContainer{
+    display: flex;
+    /* opacity: 0; */
+    animation-name: appPreviewBring;
+    border: 3px solid #eeed;
+
+    animation-duration: 400ms;
+    /* animation-delay: 200ms; */
+    /* transition-delay: 200ms; */
+}
+
+@keyframes appPreviewBring {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(calc( -1 * var(--app-preview-size)));
+    }
+  }
+  
+  

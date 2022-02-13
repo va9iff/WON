@@ -1,0 +1,12 @@
+#startBar{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--startbar-height);
+    display: flex;
+    flex-direction: row;
+    
+    background: #5f2c82;  /* fallback for old browsers */
+    background: linear-gradient(to right, hsl(276, 49%, 34%), hsl(178, 50%, 42%));
+}
