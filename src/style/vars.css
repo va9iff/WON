@@ -4,5 +4,8 @@
     --startbar-height: 2.7rem;
     --app-preview-size: 9rem;
     --app-previews-panel-padding: 1rem;
-    --app-previews-panel-scrollbar-size: 10px;
+    --app-previews-panel-scrollbar-size: 15px;
+    --app-previews-panel-side-padding: 0.5rem;
+    --app-bar-icon-margin: 0.2rem;
+    
 }
