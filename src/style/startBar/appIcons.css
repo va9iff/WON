@@ -1,50 +1,57 @@
 #appsBar{
     display: flex;
-    gap: 0;
-    /* flex-direction: row; */
-    /* border: 2px solid #444; */
+    width: 100%;
+    justify-content: center;
 }
 
 .startBarAppIcon{
-    background-color: #f008;
     border: 2px solid #444;
     height: 100%;
     width: var(--startbar-height);
 }
 
-.appsBarContainer{
-    /* display: flex; */
-    position: absolute;
-    left: 0.5rem;
-    width: calc(100% - 1rem);
-    justify-content: center;
-    display: none;
-    flex-direction: row;
-    background-color: #444;
-    animation-fill-mode: forwards;
-    transform-origin: top left;
-    transition-duration: 1000ms;
-    gap: 1rem;
+
+.appPreview{
+    background-color: #dc143c;
+    min-height: var(--app-preview-size);
+    min-width: var(--app-preview-size);
+
 }
 
-.appsBarContainer > .appPreview{
-    background-color: #dc143c;
-    height: var(--app-preview-size);
-    width: var(--app-preview-size);
+.appsBarContainer{
+    display: flex;
+    opacity: 0;
+    /* display: none; */
+    position: absolute;
+    left: 0.5rem;
+    /* top: 100%; */
+    width: calc(100% - 1rem);
+    justify-content: center;
+    /* background-color: #4444; */
+
+    /* animation-fill-mode: forwards; */
+    transform-origin: bottom;
+    top: calc(-2 * var(--app-previews-panel-padding) - 2 * var(--app-previews-panel-scrollbar-size));
+    transform: translateY(calc( -1 * var(--app-preview-size))) scale(0.7, 0);
+    transition-duration: 400ms;
+    /* pointer-events: none; */
 }
 
 .startBarAppIcon:hover > .appsBarContainer{
-    display: flex;
-    /* opacity: 0; */
-    animation-name: appPreviewBring;
-    border: 3px solid #eeed;
+    /* display: flex; */
+    opacity: 0;
+    /* animation-name: appPreviewBring; */
+    /* border: 2px solid #eeed; */
+    transform: translateY(calc( -1 * var(--app-preview-size))) scaleX(1);
+    top: calc(-2 * var(--app-previews-panel-padding) - 2 * var(--app-previews-panel-scrollbar-size));
+    opacity: 1;
 
     animation-duration: 400ms;
     /* animation-delay: 200ms; */
     /* transition-delay: 200ms; */
 }
 
-@keyframes appPreviewBring {
+/* @keyframes appPreviewBring {
     0% {
         opacity: 0;
         transform: translateY(0);
@@ -53,6 +60,64 @@
         opacity: 1;
         transform: translateY(calc( -1 * var(--app-preview-size)));
     }
-  }
+  } */
   
   
+
+  /* styles */
+
+#appsBar{
+    gap: 0.2rem;
+}
+
+
+.appsBarContainer{
+}
+
+.appPreview{
+    opacity: 0.85;
+    transition-duration: 200ms;
+    transform: scale(1);
+    border-radius: 7px;
+}
+
+.appPreview:hover{
+    opacity: 1;
+    transform: scale(1.2);
+    border: 2px solid #eeea;
+}
+
+
+.centeredAppPreviewContainer{
+    padding: var(--app-previews-panel-padding);
+}
+
+/* width */
+.centeredAppPreviewContainer::-webkit-scrollbar {
+    width: var(--app-previews-panel-scrollbar-size);
+    /* border-radius: 7px; */
+}
+
+/* Track */
+.centeredAppPreviewContainer::-webkit-scrollbar-track {
+background: #f1f1f1;
+border-radius: 2rem;
+}
+
+/* Handle */
+.centeredAppPreviewContainer::-webkit-scrollbar-thumb {
+border-radius: 2rem;
+background: #888;
+}
+
+/* Handle on hover */
+.centeredAppPreviewContainer::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+
+.centeredAppPreviewContainer{
+display: flex;
+max-width: 100%;
+overflow-x: scroll;
+gap: 1rem;
+}

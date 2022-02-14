@@ -2,5 +2,7 @@
     --window-border: 0px;
     --iframe-pointer-event: auto;
     --startbar-height: 2.7rem;
-    --app-preview-size: 7rem
+    --app-preview-size: 9rem;
+    --app-previews-panel-padding: 1rem;
+    --app-previews-panel-scrollbar-size: 10px;
 }
