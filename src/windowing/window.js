@@ -4,25 +4,33 @@ let el = (t, c) => {
   return _el
 }
 
+import {APPS} from '../index.js'
+
 export class Window {
   static ALL = [] // !SHOULD be re assigned in extendeds
   static NAM = "exampleApp"
   static SRC = "src/apps/example/index.html"
   x = 80
   y = 80
-  constructor() {
-    this.constructor.ALL.push(this)
+  constructor(app) {
+    this.app = app
+    APPS[this.app.name].windows.push(this)
+
+    // console.log(this.app.url[0])
   }
   open() {}
   makeWindowElement(x, y) {
     this.TOP = el("div", "window")
-    this.TOP.id = this.constructor.NAM + this.constructor.ALL.length
+    console.log(APPS[this.app.name].windows, '66')
+    this.TOP.id = this.app.name + APPS[this.app.name]
+
+    // !!! make title bar show title tag's innerHTML
     this.TOP.innerHTML = `
 			<div class="windowTopBar">
 				<div class="windowTopBarLeft">
 					<div class="windowAppIcon">!!#</div>
 				</div>
-				<div class="windowTopTitleBar">!!title</div>
+				<div class="windowTopTitleBar">${this.app.name}</div>
 				<div class="windowTopBarRight">
 					<button class="minimizeWindow">-</button>
 					<button class="resizeWindow">O</button>
@@ -30,7 +38,7 @@ export class Window {
 				</div>
 			</div>
 			<div class="windowContent">
-				<iframe src="${this.constructor.SRC}" frameborder="0" class="windowPage"></iframe>
+				<iframe src="${this.app.url}" frameborder="0" class="windowPage"></iframe>
 			</div>
 		`
     document.querySelector("#desktop").appendChild(this.TOP)
