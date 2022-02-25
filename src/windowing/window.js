@@ -4,8 +4,8 @@ let el = (t, c) => {
   return _el
 }
 
-import {APPS} from '../index.js'
-import {refreshAppPreviewIcon} from '../index.js'
+import {APPS} from '../appsController.js'
+import {refreshAppPreviewIcon} from '../appsController.js'
 
 export class Window {
   static ALL = [] // !SHOULD be re assigned in extendeds
@@ -16,13 +16,11 @@ export class Window {
   constructor(app) {
     this.app = app
     APPS[this.app.name].windows.push(this)
-
-    // console.log(this.app.url[0])
+    refreshAppPreviewIcon(this.app.name)
   }
   open() {}
   makeWindowElement(x, y) {
     this.TOP = el("div", "window")
-    console.log(APPS[this.app.name].windows, '66')
     this.TOP.id = this.app.name + APPS[this.app.name]
 
     // !!! make title bar show title tag's innerHTML
@@ -53,7 +51,7 @@ export class Window {
   }
   close(e) {
     this.TOP.remove()
-    console.log(this.app.name)
+    console.log('close',this.app.name)
     APPS[this.app.name].windows = APPS[this.app.name].windows.filter(w=>w!=this)
     refreshAppPreviewIcon(this.app.name)
   }
@@ -101,6 +99,5 @@ export class Window {
     this.TOP.style.setProperty("--x", this.x + "px")
     this.TOP.style.setProperty("--y", this.y + "px")
     // elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    // console.log(this.x, this.TOP.style.getPropertyValue('--x'))
   }
 }
