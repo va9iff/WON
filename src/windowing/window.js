@@ -5,6 +5,7 @@ let el = (t, c) => {
 }
 
 import {APPS} from '../index.js'
+import {refreshAppPreviewIcon} from '../index.js'
 
 export class Window {
   static ALL = [] // !SHOULD be re assigned in extendeds
@@ -52,6 +53,9 @@ export class Window {
   }
   close(e) {
     this.TOP.remove()
+    console.log(this.app.name)
+    APPS[this.app.name].windows = APPS[this.app.name].windows.filter(w=>w!=this)
+    refreshAppPreviewIcon(this.app.name)
   }
   addListeners() {
     // in the top window element, the only unique thing is its id.
@@ -59,6 +63,9 @@ export class Window {
     this.TOP.querySelector(".closeWindow").onclick = e => this.close(e)
     this.TOP.querySelector(".windowTopBar").onmousedown = e =>
       this.startDragging(e)
+  }
+  addStartBarPreview(){
+
   }
 
   // draggabmle window feature

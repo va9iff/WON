@@ -92,6 +92,12 @@
 }
 
 
+/* we wanted it to be centered when it isn't big enough to be scrolled
+display flex's feature makes it centered when its left is overflown
+at the max left scrolled, we can't see them
+so we a centered element which doesn't centers inner elements.
+*/
+
 .centeredAppPreviewContainer{
     padding: var(--app-previews-panel-padding) 30%;
 }
