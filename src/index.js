@@ -7,6 +7,8 @@ async function starter() {
 	window.A = APPS
 	console.log(A)
 
+	window.w = Window
+
 	new Window(APPS["example"].app).makeWindowElement(50, 60)
 	new Window(APPS["example"].app).makeWindowElement(50, 60)
 	new Window(APPS["example2"].app).makeWindowElement(50, 60)

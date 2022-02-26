@@ -4,8 +4,8 @@ let el = (t, c) => {
   return _el
 }
 
-import {APPS} from '../appsController.js'
-import {refreshAppPreviewIcon} from '../appsController.js'
+import { APPS } from "../appsController.js"
+import { refreshAppPreviewIcon } from "../previewIconController.js"
 
 export class Window {
   static ALL = [] // !SHOULD be re assigned in extendeds
@@ -16,7 +16,6 @@ export class Window {
   constructor(app) {
     this.app = app
     APPS[this.app.name].windows.push(this)
-    refreshAppPreviewIcon(this.app.name)
   }
   open() {}
   makeWindowElement(x, y) {
@@ -25,34 +24,38 @@ export class Window {
 
     // !!! make title bar show title tag's innerHTML
     this.TOP.innerHTML = `
-			<div class="windowTopBar">
-				<div class="windowTopBarLeft">
-					<div class="windowAppIcon">!!#</div>
-				</div>
-				<div class="windowTopTitleBar">${this.app.name}</div>
-				<div class="windowTopBarRight">
-					<button class="minimizeWindow">-</button>
-					<button class="resizeWindow">O</button>
-					<button class="closeWindow">x</button>
-				</div>
-			</div>
-			<div class="windowContent">
-				<iframe src="${this.app.url}" frameborder="0" class="windowPage"></iframe>
-			</div>
-		`
+      <div class="windowTopBar">
+        <div class="windowTopBarLeft">
+          <div class="windowAppIcon">!!#</div>
+        </div>
+        <div class="windowTopTitleBar">${this.app.name}</div>
+        <div class="windowTopBarRight">
+          <button class="minimizeWindow">-</button>
+          <button class="resizeWindow">O</button>
+          <button class="closeWindow">x</button>
+        </div>
+      </div>
+      <div class="windowContent">
+        <iframe src="${this.app.url}" frameborder="0" class="windowPage"></iframe>
+      </div>
+    `
     document.querySelector("#desktop").appendChild(this.TOP)
 
-    this.x = x | 50
-    this.y = y | 50
+    this.x = x
+    this.y = y
 
     this.TOP.style.setProperty("--x", this.x + "px")
-    this.TOP.style.setProperty("--y", this.x + "px")
+    this.TOP.style.setProperty("--y", this.y + "px")
+
     this.addListeners()
+    refreshAppPreviewIcon(this.app.name)
   }
   close(e) {
     this.TOP.remove()
-    console.log('close',this.app.name)
-    APPS[this.app.name].windows = APPS[this.app.name].windows.filter(w=>w!=this)
+    console.log("close", this.app.name)
+    APPS[this.app.name].windows = APPS[this.app.name].windows.filter(
+      w => w != this
+    )
     refreshAppPreviewIcon(this.app.name)
   }
   addListeners() {
@@ -62,9 +65,7 @@ export class Window {
     this.TOP.querySelector(".windowTopBar").onmousedown = e =>
       this.startDragging(e)
   }
-  addStartBarPreview(){
-
-  }
+  addStartBarPreview() {}
 
   // draggabmle window feature
   startDragging(e) {
@@ -74,13 +75,13 @@ export class Window {
     this.startY = e.clientY
     document.onmouseup = e => this.stopDragging(e)
     document.onmousemove = e => this.drag(e)
-    document.documentElement.style.setProperty("--iframe-pointer-event", 'none')
+    document.documentElement.style.setProperty("--iframe-pointer-event", "none")
   }
   stopDragging(e) {
     // stop moving when mouse button is released:
     document.onmouseup = null
     document.onmousemove = null
-    document.documentElement.style.setProperty("--iframe-pointer-event", 'auto')
+    document.documentElement.style.setProperty("--iframe-pointer-event", "auto")
   }
   drag(e) {
     e = e || window.event
