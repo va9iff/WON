@@ -7,6 +7,8 @@ let el = (t, c) => {
 import { APPS } from "../appsController.js"
 import { refreshAppPreviewIcon } from "../previewIconController.js"
 
+import {addWindowPreview} from '../windowPreviewController.js'
+
 export class Window {
   static ALL = [] // !SHOULD be re assigned in extendeds
   static NAM = "exampleApp"
@@ -16,6 +18,8 @@ export class Window {
   constructor(app) {
     this.app = app
     APPS[this.app.name].windows.push(this)
+    addWindowPreview(this)
+
   }
   open() {}
   makeWindowElement(x, y) {
@@ -56,6 +60,7 @@ export class Window {
     APPS[this.app.name].windows = APPS[this.app.name].windows.filter(
       w => w != this
     )
+    this.preview.remove()
     refreshAppPreviewIcon(this.app.name)
   }
   addListeners() {
