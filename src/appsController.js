@@ -16,11 +16,10 @@ export async function importAppModule(name) {
 
 export function loadApp(appModule) {
 	let app = appModule.default
-	APPS[app.name] = {}
-	APPS[app.name].windows = []
-	APPS[app.name].app = app
+	APPS[app.name] = app
+	app.windows = []
 	// assign fileicons, openwith and similar stuff
-	addAppPreviewIcon(app.name)
+	addAppPreviewIcon(app)
 }
 
 export async function loadApps() {

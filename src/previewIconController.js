@@ -2,44 +2,46 @@ import { APPS } from "./appsController.js"
 
 export var appPreviewIconsBar = document.querySelector("#appsBar")
 
-export function showAppPreviewIcon(appName) {
-	APPS[appName].startBarAppIcon.style.display = "block"
+export function showAppPreviewIcon(app) {
+	// !!anmapp
+	if (app.startBarAppIcon) app.startBarAppIcon.style.display = "block"
 }
 
-export function hideAppPreviewIcon(appName) {
-	APPS[appName].startBarAppIcon.style.display = "none"
+export function hideAppPreviewIcon(app) {
+	app.startBarAppIcon.style.display = "none"
 }
 
-export function addAppPreviewIcon(appName) {
-	// console.log('prev', app,'888')
-	// console.log(APPS[app.name].windows.length)
+// !! we should check for dynamic ones too
+// currently only the loaded apps have preview icon
+// export function checkAppPreviewIcon(app) {
+// if(! have an icon in the startBar) addAppPreviewIcon(app)
+// }
 
-	APPS[appName].startBarAppIcon = document.createElement("div")
-	APPS[appName].startBarAppIcon.id = appName + "StartBarIcon"
-	APPS[appName].startBarAppIcon.className = "startBarAppIcon"
-	appPreviewIconsBar.appendChild(APPS[appName].startBarAppIcon)
+export function addAppPreviewIcon(app) {
+	app.startBarAppIcon = document.createElement("div")
+	app.startBarAppIcon.id = app.name + "StartBarIcon"
+	app.startBarAppIcon.className = "startBarAppIcon"
+	appPreviewIconsBar.appendChild(app.startBarAppIcon)
 
 	// app icon
-	APPS[appName].startBarAppIcon.innerHTML = appName[0]
+	app.startBarAppIcon.innerHTML = app.name[0]
 
-	APPS[appName].appsBarContainer = document.createElement("div")
-	APPS[appName].appsBarContainer.id = appName
-	APPS[appName].appsBarContainer.className = "appsBarContainer"
-	APPS[appName].startBarAppIcon.appendChild(APPS[appName].appsBarContainer)
+	app.appsBarContainer = document.createElement("div")
+	app.appsBarContainer.id = app.name
+	app.appsBarContainer.className = "appsBarContainer"
+	app.startBarAppIcon.appendChild(app.appsBarContainer)
 
-	APPS[appName].centeredAppPreviewContainer = document.createElement("div")
-	APPS[appName].centeredAppPreviewContainer.id = appName
-	APPS[appName].centeredAppPreviewContainer.className =
-		"centeredAppPreviewContainer"
-	APPS[appName].appsBarContainer.appendChild(
-		APPS[appName].centeredAppPreviewContainer
-	)
+	app.centeredAppPreviewContainer = document.createElement("div")
+	app.centeredAppPreviewContainer.id = app.name
+	app.centeredAppPreviewContainer.className = "centeredAppPreviewContainer"
+	app.appsBarContainer.appendChild(app.centeredAppPreviewContainer)
 }
 
-export function refreshAppPreviewIcon(appName) {
-	if (APPS[appName].windows.length == 0) {
-		return hideAppPreviewIcon(appName)
+export function refreshAppPreviewIcon(app) {
+	// !!anmapp
+	if (app.windows?.length == 0) {
+		return hideAppPreviewIcon(app)
 	} else {
-		showAppPreviewIcon(appName)
+		showAppPreviewIcon(app)
 	}
 }

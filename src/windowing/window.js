@@ -17,14 +17,15 @@ export class Window {
   y = 80
   constructor(app) {
     this.app = app
-    APPS[this.app.name].windows.push(this)
+    // !!anmapp AGAIN, another ? for anonymous app windows
+    this.app.windows?.push(this)
     addWindowPreview(this)
 
   }
   open() {}
   makeWindowElement(x, y) {
     this.TOP = el("div", "window")
-    this.TOP.id = this.app.name + APPS[this.app.name]
+    this.TOP.id = this.app.name + this.app
 
     // !!! make title bar show title tag's innerHTML
     this.TOP.innerHTML = `
@@ -52,16 +53,17 @@ export class Window {
     this.TOP.style.setProperty("--y", this.y + "px")
 
     this.addListeners()
-    refreshAppPreviewIcon(this.app.name)
+    refreshAppPreviewIcon(this.app)
   }
   close(e) {
     this.TOP.remove()
     console.log("close", this.app.name)
-    APPS[this.app.name].windows = APPS[this.app.name].windows.filter(
+    // !!anmapp
+    if(this.app.windows)this.app.windows = this.app.windows.filter(
       w => w != this
     )
     this.preview.remove()
-    refreshAppPreviewIcon(this.app.name)
+    refreshAppPreviewIcon(this.app)
   }
   addListeners() {
     // in the top window element, the only unique thing is its id.
