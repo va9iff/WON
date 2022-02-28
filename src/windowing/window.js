@@ -17,10 +17,11 @@ export class Window {
   y = 80
   constructor(app) {
     this.app = app
-    // !!anmapp AGAIN, another ? for anonymous app windows
-    this.app.windows?.push(this)
+    // V!!anmapp AGAIN, another ? for anonymous app windows
+    // they will have windows prop on app obbjects.
+    this.app.windows.push(this)
     addWindowPreview(this)
-
+    refreshAppPreviewIcon(app)
   }
   open() {}
   makeWindowElement(x, y) {

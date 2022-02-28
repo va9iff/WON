@@ -4,7 +4,7 @@ export var APPS = {}
 // we store needed infos in its key
 // also the app in the app key of its name key
 
-import { addAppPreviewIcon } from "./previewIconController.js"
+import { addAppPreviewIcon, refreshAppPreviewIcon } from "./previewIconController.js"
 
 export var appsToLoad = ["example", "example2"]
 
@@ -14,17 +14,29 @@ export async function importAppModule(name) {
 	return loaded
 }
 
-export function loadApp(appModule) {
-	let app = appModule.default
-	APPS[app.name] = app
+// pass object; returns proper app object
+// but we won't use it, as anonymous apps don't fit our system
+// instead, we can dynamically load apps using loadApp :25
+// and doesn't give full Proper app object. we fullfill on loadApp
+// and calling this become useless, we call loadApp with raw app obj
+// so currently, anonymous apps aren't real for us
+export function appify(app){
 	app.windows = []
+	return app
+}
+
+export function loadApp(appModule) {
+	let app = appModule
+	app = appify(app) // fix the missed keys
+	APPS[app.name] = app
 	// assign fileicons, openwith and similar stuff
 	addAppPreviewIcon(app)
+	refreshAppPreviewIcon(app)
 }
 
 export async function loadApps() {
 	for (let app of appsToLoad) {
 		let importedApp = await importAppModule(app)
-		loadApp(importedApp)
+		loadApp(importedApp.default)
 	}
 }
