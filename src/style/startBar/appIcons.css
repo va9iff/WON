@@ -1,34 +1,45 @@
-#appsBar{
+#appsBarCenterer {
     display: flex;
     width: 100%;
     justify-content: center;
 }
+#appsBar {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+    /*this would break the scroll at the start*/
+    /*justify-content: center;*/
+    /*that's why we have nested one at top :1*/
+    overflow-x: scroll;
+}
 
-.startBarAppIcon{
-    background-color:  #444;
+.startBarAppIcon {
+    background-color: #444;
     transition: 260ms;
     border-radius: 0.4rem;
     padding: 0.2rem;
-    margin: var(--app-bar-icon-margin);;
-    height: calc(100% - 2 * var(--app-bar-icon-margin));
+    margin: var(--app-bar-icon-margin);
+    margin-top: var(--start-bar-scroller-height);
+    margin-bottom: 0;
+    /*height: calc(100% - 2 * var(--app-bar-icon-margin) - var(--start-bar-scroller-height));*/
+    height: calc(100% - var(--start-bar-scroller-height));
     width: var(--startbar-height);
+    min-width: var(--startbar-height);
 }
 
-
-.appPreview{
-    background-color: #dc143c;
+.appPreview {
+    background-color: hsl(250deg, 24%, 48%);
     min-height: var(--app-preview-size);
     min-width: var(--app-preview-size);
-
 }
 
-.startBarAppIcon:hover{
+.startBarAppIcon:hover {
     /* border: 4px solid #888; */
     background-color: #888;
     transition: 160;
 }
 
-.appsBarContainer{
+.appsBarContainer {
     /* display: none; */ /* it always is shown :/ */
     display: flex;
     position: absolute;
@@ -39,20 +50,19 @@
     /* background-color: #4444; */
 
     transform-origin: bottom;
-    transition-duration: 200ms;
-    transition-delay: 60ms;
+    transition-duration: 300ms;
+    transition-delay: 0ms;
     transform: scale(0.7, 0);
     opacity: 0;
 }
 
-
-.startBarAppIcon:hover > .appsBarContainer{
+.startBarAppIcon:hover > .appsBarContainer {
     /* border: 2px solid #eeed; */
     transform: scaleX(1);
     opacity: 1;
-    transition-delay: 60ms;
-    transition-duration: 300ms;
-    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-delay: 120ms;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.57, 0.82, 0.165, 1);
 }
 
 /* @keyframes appPreviewBring {
@@ -65,32 +75,28 @@
         transform: translateY(calc( -1 * var(--app-preview-size)));
     }
   } */
-  
-  
 
-  /* styles */
+/* styles */
 
-#appsBar{
+#appsBar {
     gap: 0.2rem;
 }
 
-
-.appsBarContainer{
+.appsBarContainer {
 }
 
-.appPreview{
+.appPreview {
     opacity: 0.85;
     transition-duration: 200ms;
     transform: scale(1);
     border-radius: 7px;
 }
 
-.appPreview:hover{
+.appPreview:hover {
     opacity: 1;
     transform: scale(1.2);
     border: 2px solid #eeea;
 }
-
 
 /* we wanted it to be centered when it isn't big enough to be scrolled
 display flex's feature makes it centered when its left is overflown
@@ -98,7 +104,7 @@ at the max left scrolled, we can't see them
 so we a centered element which doesn't centers inner elements.
 */
 
-.centeredAppPreviewContainer{
+.centeredAppPreviewContainer {
     padding: var(--app-previews-panel-padding) 30%;
 }
 
@@ -110,25 +116,42 @@ so we a centered element which doesn't centers inner elements.
 
 /* Track */
 .centeredAppPreviewContainer::-webkit-scrollbar-track {
-background: #98B4AA;
-border-radius: 2rem;
+    background: #98b4aa;
+    border-radius: 2rem;
 }
 
 /* Handle */
 .centeredAppPreviewContainer::-webkit-scrollbar-thumb {
-border-radius: 2rem;
-background: #634df5;
-border: 4px solid #98B4AA;
+    border-radius: 2rem;
+    background: #634df5;
+    border: 4px solid #98b4aa;
 }
 
 /* Handle on hover */
 .centeredAppPreviewContainer::-webkit-scrollbar-thumb:hover {
-background: #423882;
+    background: #423882;
 }
 
-.centeredAppPreviewContainer{
-display: flex;
-max-width: 100%;
-overflow-x: scroll;
-gap: 1rem;
+.centeredAppPreviewContainer {
+    display: flex;
+    max-width: 100%;
+    overflow-x: scroll;
+    gap: 1rem;
+}
+
+
+/*for startbar general*/
+#appsBar::-webkit-scrollbar {
+    height: var(--start-bar-scroller-height);
+    background-color: #0000;
+}
+ 
+#appsBar::-webkit-scrollbar-track {
+    background-color: #0000;
+}
+ 
+#appsBar::-webkit-scrollbar-thumb {
+    /*background-color: hsl(150, 50%, 50%);*/
+    background-color: hsl(150, 100%, 68%);
+    /*border: 1px solid #333;*/
 }
