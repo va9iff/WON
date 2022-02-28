@@ -24,7 +24,7 @@ export class Window {
     refreshAppPreviewIcon(app)
   }
   open() {}
-  makeWindowElement(x, y) {
+  makeWindowElement(x=80, y=80) {
     this.TOP = el("div", "window")
     this.TOP.id = this.app.name + this.app
 

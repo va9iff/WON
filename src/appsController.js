@@ -5,6 +5,7 @@ export var APPS = {}
 // also the app in the app key of its name key
 
 import { addAppPreviewIcon, refreshAppPreviewIcon } from "./previewIconController.js"
+import { desktopIcon } from "./desktop/desktopIcons.js"
 
 export var appsToLoad = ["example", "example2"]
 
@@ -35,8 +36,9 @@ export function loadApp(appModule) {
 }
 
 export async function loadApps() {
-	for (let app of appsToLoad) {
-		let importedApp = await importAppModule(app)
+	for (let appName of appsToLoad) {
+		let importedApp = await importAppModule(appName)
 		loadApp(importedApp.default)
+		new desktopIcon(APPS[appName]).add()
 	}
 }
