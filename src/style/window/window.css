@@ -1,9 +1,10 @@
 .window{
     border: 2px solid #222;
-    border-radius: var(--window-border);
+    border-radius: var(--window-border-radius);
     position: absolute;
     left: var(--x);
     top: var(--y);
+    /* we use native html resize */
     /* width: var(--sx); */
     /* height: var(--sy); */
     /* for resize, we need to specify overflow */
@@ -11,19 +12,14 @@
     overflow: hidden;
     resize: both;
 
-    /* width: 100px; */
-    /* height: 100px; */
-    
-
     display: flex;
     flex-direction: column;
 }
 
 
 .windowContent{
-    background-color: #f3f2;
-    height: calc(var(--sy) - var(--topBarThickness) - 4px);
-    width: calc(var(--sx) - 4px);
+    background-color: #53f2;
+    min-height: 0;
     
     flex: 1;
     display: flex;

@@ -32,7 +32,7 @@ export class Window {
     this.TOP.innerHTML = `
       <div class="windowTopBar">
         <div class="windowTopBarLeft">
-          <div class="windowAppIcon">!!#</div>
+          <img class="windowAppIcon" src="${this.app.icon}"></img>
         </div>
         <div class="windowTopTitleBar">${this.app.name}</div>
         <div class="windowTopBarRight">
@@ -70,6 +70,7 @@ export class Window {
     // in the top window element, the only unique thing is its id.
     // so bind everything by this.
     this.TOP.querySelector(".closeWindow").onclick = e => this.close(e)
+    this.TOP.querySelector(".closeWindow").onmousedown = e => e.stopPropagation()
     this.TOP.querySelector(".windowTopBar").onmousedown = e =>
       this.startDragging(e)
   }

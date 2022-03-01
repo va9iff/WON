@@ -1,29 +1,56 @@
 .windowTopBar{
-    height: var(--topBarThickness);
-    background-color: #f56d;
-    padding: 3px;
+    min-height: var(--top-bar-thickness);
+    background-color: hsl(228deg, 20%, 40%);
+    /*padding: 3px;*/
     display: flex;
     flex-direction: row;
-    border-radius: var(--window-border) var(--window-border) 0 0;
+    border-radius: var(--window-border-radius) var(--window-border-radius) 0 0;
 }
 
 .windowTopBarLeft{
-    background-color: #adff2f22;
+    /*background-color: #adff2f22;*/
     display: flex;
     justify-content: flex-start;
+    padding-left: 0.5rem;
+    align-items: center;
     flex-grow: 1;
 }
 .windowTopBarRight{
     flex-grow: 1;
-    background-color: #daa52022;
+    /*background-color: #daa52022;*/
     display: flex;
     justify-content: flex-end;
 }
 
 .windowAppIcon{
-    background-color: #4b008222;
+    /*background-color: #4b008222;*/
+    height: calc(var(--window-icon-ratio) * var(--top-bar-thickness));
+    /*transform: scale(0.5)*/
+    /*display: inline;*/
 }
 
 .windowTopTitleBar{
     background-color: #5552;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+button.minimizeWindow,
+button.resizeWindow,
+button.closeWindow{
+    width: calc(var(--window-main-button-ratio) * var(--top-bar-thickness));
+    border-radius: 0;
+    border: none;
+    background-color: #0000;
+    transition-duration: 120ms;
+    color: #eeeb;
+}
+
+button.minimizeWindow:hover,
+button.resizeWindow:hover,
+button.closeWindow:hover{
+    color: #eeef;
+    background-color: #eee4;
 }

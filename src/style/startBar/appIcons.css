@@ -43,7 +43,9 @@
     /* display: none; */ /* it always is shown :/ */
     display: flex;
     position: absolute;
-    bottom: calc(100% - var(--app-bar-icon-margin));
+    bottom: calc(100% - var(--start-bar-scroller-height));
+    /*start-bar-scroller is the scroller on icons, not previews*/
+    /*the top/buttom margins are defined from this*/
     left: var(--app-previews-panel-side-padding);
     width: calc(100% - 2 * var(--app-previews-panel-side-padding));
     justify-content: center;
@@ -51,9 +53,9 @@
 
     transform-origin: bottom;
     transition-duration: 300ms;
-    transition-delay: 0ms;
+    transition-delay: 16ms;
     transform: scale(0.7, 0);
-    opacity: 0;
+    opacity: 0.4;
 }
 
 .startBarAppIcon:hover > .appsBarContainer {
