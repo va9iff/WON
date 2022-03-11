@@ -1,5 +1,19 @@
 const BASE = "http://127.0.0.1:8080/"
 
+const browseWrapper = (path)=>{
+    window.parent.postMessage({
+        fun: "browse",
+        arg: path
+
+    }, "*")
+}
+
+browseWrapper('>')
+
+// console.log(window.parent.postMessage("WON", "*"))
+
+
+
 // => json
 async function browseAt(path) {
     let url = BASE + path
