@@ -26,7 +26,7 @@
 }
 
 .windowPage{
-    overflow: scroll;
+    /*overflow: scroll;*/
     width: 100%;
 
     pointer-events: var(--iframe-pointer-event);
