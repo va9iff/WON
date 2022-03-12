@@ -3,8 +3,17 @@ const WONU = "http://127.0.0.1:5000/" //export
 
 async function browse(path="tmp") {
   try {
-    const response = await axios.get(`${WONU}/browse/${path}`);
-    return response
+    const response = await fetch(`${WONU}/browse/${path}`);
+    try{
+      const jsoned = await response.json();
+      return jsoned
+    }
+    catch(err){
+      return response
+    }
+    console.log(jsoned)
+
+    // console.log(response)
   } catch (error) {
     console.error(error);
   }
