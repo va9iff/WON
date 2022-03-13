@@ -8,7 +8,7 @@ import { addAppPreviewIcon, refreshAppPreviewIcon } from "./previewIconControlle
 import { desktopIcon } from "./desktop/desktopIcons.js"
 import { Window } from "./windowing/window.js"
 
-export var appsToLoad = ["example", "files"]
+export var appsToLoad = ["example", "files", "image-viewer"]
 
 export async function importAppModule(name) {
 	let path = `./apps/${name}/app.js`

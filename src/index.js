@@ -10,13 +10,18 @@ async function starter() {
 
 	window.w = Window
 
-	let app = launch("files")
-	app.TOP.style.width = "100%"
-	app.TOP.style.height = "100%"
+	// let filesWin = launch("files")
+	// filesWin.TOP.style.width = "100%"
+	// filesWin.TOP.style.height = "100%"
 
-	// new Window(APPS["example"]).makeWindowElement(50, 60)
-	// new Window(APPS["example"]).makeWindowElement(50, 60)
-	// new Window(APPS["example"]).makeWindowElement(50, 60)
+	window.opu = "k"
+	let iv = launch("image-viewer")
+
+	let custommsg = "hahahahahahah from top"
+
+	// onload overrides previously assigneds
+	iv.frame.contentWindow.addEventListener("load", ()=> iv.frame.contentWindow.openWith(custommsg))
+	iv.frame.contentWindow.addEventListener("load", ()=> iv.frame.contentWindow.wantingFromWon("I order p"))
 	
 
 }

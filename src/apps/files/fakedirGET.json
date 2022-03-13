@@ -1,8 +1,0 @@
-{
-	"path": "src/apps/files/fakedir/",
-	"directory": [
-		"myText.txt",
-		"some text.txt",
-		"icon.png"
-	]
-}

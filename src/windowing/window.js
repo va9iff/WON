@@ -57,6 +57,7 @@ export class Window {
       </div>
     `
     desktop.appendChild(this.TOP)
+    this.frame = this.TOP.querySelector("iframe")
 
     this.x = x
     this.y = y
