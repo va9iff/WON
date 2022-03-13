@@ -9,19 +9,30 @@ import { refreshAppPreviewIcon } from "../previewIconController.js"
 
 import {addWindowPreview} from '../windowPreviewController.js'
 
+let desktop = document.querySelector("#desktop")
+
 export class Window {
   static ALL = [] // !SHOULD be re assigned in extendeds
   static NAM = "exampleApp"
   static SRC = "src/apps/example/index.html"
-  x = 80
-  y = 80
-  constructor(app) {
+  x = 80  // for calcing dragging. don't set
+  y = 80  // for calcing dragging. don't set
+  set position(nposArray){ //for setting position
+    this.x = nposArray[0]
+    this.y = nposArray[1]
+    this.TOP.style.setProperty("--x", this.x + "px")
+    this.TOP.style.setProperty("--y", this.y + "px")
+
+  }
+  constructor(app, url) {
     this.app = app
+    this.url = url
     // V!!anmapp AGAIN, another ? for anonymous app windows
     // they will have windows prop on app obbjects.
     this.app.windows.push(this)
     addWindowPreview(this)
     refreshAppPreviewIcon(app)
+    this.makeWindowElement()
   }
   open() {}
   makeWindowElement(x=80, y=80) {
@@ -42,10 +53,10 @@ export class Window {
         </div>
       </div>
       <div class="windowContent">
-        <iframe src="${this.app.url}" frameborder="0" class="windowPage"></iframe>
+        <iframe src="${this.url}" frameborder="0" class="windowPage"></iframe>
       </div>
     `
-    document.querySelector("#desktop").appendChild(this.TOP)
+    desktop.appendChild(this.TOP)
 
     this.x = x
     this.y = y

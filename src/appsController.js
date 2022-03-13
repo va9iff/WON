@@ -6,6 +6,7 @@ export var APPS = {}
 
 import { addAppPreviewIcon, refreshAppPreviewIcon } from "./previewIconController.js"
 import { desktopIcon } from "./desktop/desktopIcons.js"
+import { Window } from "./windowing/window.js"
 
 export var appsToLoad = ["example", "files"]
 
@@ -26,6 +27,13 @@ export function appify(app){
 	return app
 }
 
+export function launch(appName){
+	let app = APPS[appName]
+	let win = new Window(app,app.home)
+	return win
+
+}
+
 export function loadApp(appModule) {
 	let app = appModule
 	app = appify(app) // fix the missed keys
@@ -42,3 +50,6 @@ export async function loadApps() {
 		new desktopIcon(APPS[appName]).add()
 	}
 }
+
+
+window.launch = launch

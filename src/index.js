@@ -1,6 +1,6 @@
 import { Window } from "./windowing/window.js"
 import { desktopIcon } from "./desktop/desktopIcons.js"
-import { APPS, loadApps, loadApp } from "./appsController.js"
+import { APPS, launch, loadApps, loadApp } from "./appsController.js"
 
 async function starter() {
 	await loadApps()
@@ -10,8 +10,7 @@ async function starter() {
 
 	window.w = Window
 
-	let app = new Window(APPS["files"])
-	app.makeWindowElement(0,0)
+	let app = launch("files")
 	app.TOP.style.width = "100%"
 	app.TOP.style.height = "100%"
 
