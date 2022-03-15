@@ -84,7 +84,7 @@ export class Window {
     this.TOP.style.width = "var(--w)"
     this.TOP.style.height = "var(--h)"
 
-    
+
     this.TOP.style.setProperty("--x", this.x + "px")
     this.TOP.style.setProperty("--y", this.y + "px")
 
@@ -140,9 +140,14 @@ export class Window {
     this.TOP.querySelector(".closeWindow").onmousedown = e => e.stopPropagation()
 
     this.TOP.querySelector(".resizeWindow").onclick = e => this.resize(e)
+    this.TOP.querySelector(".minimizeWindow").onclick = e => this.minimize(e)
+    this.preview.onclick = e => this.TOP.style.display = "flex"
 
     this.TOP.querySelector(".windowTopBar").onmousedown = e =>
       this.startDragging(e)
+  }
+  minimize(){
+    this.TOP.style.display = "none"
   }
   addStartBarPreview() {}
 
