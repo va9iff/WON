@@ -3,7 +3,7 @@ const WONU = window.location.href
 
 async function browse(path="tmp") {
   try {
-    const response = await fetch(`${WONU}/browse/${path}`);
+    const response = await fetch(`http://localhost:5000/browse/${path}`);
     try{
       const jsoned = await response.json();
       return jsoned
