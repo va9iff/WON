@@ -11,6 +11,8 @@ import {addWindowPreview} from '../windowPreviewController.js'
 
 let desktop = document.querySelector("#desktop")
 
+var topZ = 0
+
 export class Window {
   static ALL = [] // !SHOULD be re assigned in extendeds
   static NAM = "exampleApp"
@@ -67,6 +69,9 @@ export class Window {
     this.x = x
     this.y = y
 
+    this.TOP.style.zIndex = topZ
+    topZ++
+
     this.TOP.style.setProperty("--x", this.x + "px")
     this.TOP.style.setProperty("--y", this.y + "px")
 
@@ -76,11 +81,17 @@ export class Window {
     this.refresh()
   }
   refresh(){
+    this.TOP.style.width = "var(--w)"
+    this.TOP.style.height = "var(--h)"
+
+    
     this.TOP.style.setProperty("--x", this.x + "px")
     this.TOP.style.setProperty("--y", this.y + "px")
 
     this.TOP.style.setProperty("--w", this.w + "px")
     this.TOP.style.setProperty("--h", this.h + "px")
+
+    console.log(this.TOP)
   }
   close(e) {
     this.TOP.remove()
@@ -96,9 +107,11 @@ export class Window {
     this.TOP.style.setProperty("--x", 0)
     this.TOP.style.setProperty("--y", 0)
 
-    this.TOP.style.setProperty("--w", "100%")
-    this.TOP.style.setProperty("--h", "100%")
+    // this.TOP.style.setProperty("--w", "100%")
+    // this.TOP.style.setProperty("--h", "100%")
 
+    this.TOP.style.width = "100%"
+    this.TOP.style.height = "100%"
     // !!
     // this.TOP.style.setProperty("--window-border-radius", 0)
 
@@ -115,7 +128,12 @@ export class Window {
     this.isMaximized = false
     this.refresh()
   }
+  bringForward(){
+    this.TOP.style.zIndex = topZ++
+  }
   addListeners() {
+    this.TOP.addEventListener("mousedown",()=>this.bringForward())
+
     // in the top window element, the only unique thing is its id.
     // so bind everything by this.
     this.TOP.querySelector(".closeWindow").onclick = e => this.close(e)

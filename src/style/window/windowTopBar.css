@@ -1,10 +1,35 @@
+.windowTopBar:active~.windowContent{
+    /* it's already set in windowcss */
+    transform-origin: top;
+    transform: scale(0.8) translateY(2rem);
+    border-radius: 1.3rem;
+    overflow: hidden;
+}
+
+.windowTopBar:active>.windowTopBarLeft{
+    transform: translateX(-100%);
+}
+.windowTopBar:active{
+    /*background-color: hsl(228deg, 40%, 60%);*/
+    /*box-shadow: 0 0 0.8rem hsl(228deg, 20%, 10%) inset;*/
+    letter-spacing: 0.2rem;
+    /*font-size: 1.2rem;*/
+    box-shadow: 0 0 0 1px #cccc inset;
+    background-color: hsl(228deg, 20%, 60%);
+    border-radius: calc(var(--top-bar-thickness) / 2);
+    transition-duration: 120ms;
+}
 .windowTopBar{
+    transition-duration: 800ms;
+
     min-height: var(--top-bar-thickness);
     background-color: hsl(228deg, 20%, 40%);
     /*padding: 3px;*/
     display: flex;
     flex-direction: row;
     border-radius: var(--window-border-radius) var(--window-border-radius) 0 0;
+
+    user-select: none;
 }
 
 .windowTopBarLeft{
@@ -15,6 +40,10 @@
     align-items: center;
     flex-grow: 1;
 }
+.windowTopBarLeft{
+    transition-duration: 600ms;
+}
+
 .windowTopBarRight{
     flex-grow: 1;
     /*background-color: #daa52022;*/
@@ -30,7 +59,7 @@
 }
 
 .windowTopTitleBar{
-    background-color: #5552;
+    /*background-color: #5552;*/
     display: flex;
     align-items: center;
     justify-content: center;
