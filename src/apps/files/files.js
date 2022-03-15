@@ -57,6 +57,7 @@ async function refresh() {
 	let response = await browse(path)
 
 	if (!response.directory) {
+		// it's not just frontent thing. it's related to flask backend.
 		let res = await fetch("http://127.0.0.1:5000/browse/"+path)
 		let blob = await res.blob()
 

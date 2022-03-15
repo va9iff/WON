@@ -39,8 +39,27 @@ export function loadApp(appModule) {
 	app = appify(app) // fix the missed keys
 	APPS[app.name] = app
 	// assign fileicons, openwith and similar stuff
+	formatAppUrls(app)
 	addAppPreviewIcon(app)
 	refreshAppPreviewIcon(app)
+}
+
+function formatUrl(app,[urls]){
+	for (url of urls){
+		app[url] = app[url].replace("$WON",WONU)
+	}
+}
+
+const urlsToFormat = [
+	"home",
+	"icon",
+	"open",
+]
+
+function formatAppUrls(app){
+	for (let url of urlsToFormat){
+		app[url]=app[url]?.replace('$WON',WONU)
+	}
 }
 
 export async function loadApps() {
