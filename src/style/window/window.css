@@ -14,6 +14,10 @@
 
     display: flex;
     flex-direction: column;
+
+    animation-name: window-opening-animation;
+    animation-duration: 220ms;
+    /*animation-fill-mode: forwards;*/
 }
 
 
@@ -39,4 +43,15 @@
     /* background-color: red; */
     /* height: inherit; */
     /* background-color: red; */
+}
+
+@keyframes window-opening-animation{
+    from{
+        transform: scale(0);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
 }
