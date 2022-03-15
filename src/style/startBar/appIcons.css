@@ -25,6 +25,26 @@
     height: calc(100% - var(--start-bar-scroller-height));
     width: var(--startbar-height);
     min-width: var(--startbar-height);
+
+    animation-name: appIconAppearAnimation;
+    animation-duration: 700ms;
+
+    overflow: hidden;
+}
+
+@keyframes appIconAppearAnimation{
+    from{
+        min-width: 0;
+        width: 0;
+        padding: 0;
+        background-color: #555;
+        box-shadow: 0 0 0 0.4rem #aaa inset;
+    }
+    to{
+        min-width: var(--startbar-height);
+        background-color: #444;
+        box-shadow: 0 0 0 0 #aaa0 inset;
+    }
 }
 
 .appPreview {
