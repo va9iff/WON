@@ -1,5 +1,5 @@
 :root {
-    --window-border-radius: 3px;
+    /*--window-border-radius: 3px;*/ /* we need to adjust maximized borders */
     --iframe-pointer-event: auto;
     --startbar-height: 2.7rem;
     --app-preview-size: 9rem;

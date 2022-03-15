@@ -17,6 +17,9 @@ export class Window {
   static SRC = "src/apps/example/index.html"
   x = 80  // for calcing dragging. don't set
   y = 80  // for calcing dragging. don't set
+  w = 540 // width
+  h = 360 // height
+  isMaximized = false
   set position(nposArray){ //for setting position
     this.x = nposArray[0]
     this.y = nposArray[1]
@@ -35,6 +38,8 @@ export class Window {
     this.makeWindowElement()
   }
   open() {}
+  // we won't call this function alone. it's called in constructor.
+  // so default arguments doesn't make sense tbh
   makeWindowElement(x=80, y=80) {
     this.TOP = el("div", "window")
     this.TOP.id = this.app.name + this.app
@@ -67,6 +72,15 @@ export class Window {
 
     this.addListeners()
     refreshAppPreviewIcon(this.app)
+
+    this.refresh()
+  }
+  refresh(){
+    this.TOP.style.setProperty("--x", this.x + "px")
+    this.TOP.style.setProperty("--y", this.y + "px")
+
+    this.TOP.style.setProperty("--w", this.w + "px")
+    this.TOP.style.setProperty("--h", this.h + "px")
   }
   close(e) {
     this.TOP.remove()
@@ -78,11 +92,37 @@ export class Window {
     this.preview.remove()
     refreshAppPreviewIcon(this.app)
   }
+  maximize(){
+    this.TOP.style.setProperty("--x", 0)
+    this.TOP.style.setProperty("--y", 0)
+
+    this.TOP.style.setProperty("--w", "100%")
+    this.TOP.style.setProperty("--h", "100%")
+
+    // !!
+    // this.TOP.style.setProperty("--window-border-radius", 0)
+
+    this.isMaximized = true
+    // we don't need to track the previous. we don't change them.
+    // 0 is 0 and 100% is even string. just override the styles for now.
+  }
+  unMaximize(){ //woah how useful function
+    this.isMaximized = false
+    this.refresh()
+  }
+  resize(){
+    if (!this.isMaximized) return this.maximize()
+    this.isMaximized = false
+    this.refresh()
+  }
   addListeners() {
     // in the top window element, the only unique thing is its id.
     // so bind everything by this.
     this.TOP.querySelector(".closeWindow").onclick = e => this.close(e)
     this.TOP.querySelector(".closeWindow").onmousedown = e => e.stopPropagation()
+
+    this.TOP.querySelector(".resizeWindow").onclick = e => this.resize(e)
+
     this.TOP.querySelector(".windowTopBar").onmousedown = e =>
       this.startDragging(e)
   }
@@ -118,8 +158,10 @@ export class Window {
     this.y = this.y + this.dy
 
     // set the element's new position:
-    this.TOP.style.setProperty("--x", this.x + "px")
-    this.TOP.style.setProperty("--y", this.y + "px")
+    // this.TOP.style.setProperty("--x", this.x + "px")
+    // this.TOP.style.setProperty("--y", this.y + "px")
     // elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    this.isMaximized=false
+    this.refresh()
   }
 }

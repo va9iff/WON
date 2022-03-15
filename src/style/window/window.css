@@ -4,6 +4,8 @@
     position: absolute;
     left: var(--x);
     top: var(--y);
+    width: var(--w);
+    height: var(--h);
     /* we use native html resize */
     /* width: var(--sx); */
     /* height: var(--sy); */
@@ -16,6 +18,8 @@
     flex-direction: column;
 
     animation-name: window-opening-animation;
+    transition-duration: 120ms; /* for maximizing and etc. */
+    /*transition-timing-function: linear;*/
     animation-duration: 220ms;
     /*animation-fill-mode: forwards;*/
 }
@@ -48,10 +52,10 @@
 @keyframes window-opening-animation{
     from{
         transform: scale(0);
-        opacity: 0;
+        /*opacity: 0;*/
     }
     to{
         transform: scale(1);
-        opacity: 1;
+        /*opacity: 1;*/
     }
 }
