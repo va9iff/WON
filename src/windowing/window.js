@@ -141,7 +141,10 @@ export class Window {
 
     this.TOP.querySelector(".resizeWindow").onclick = e => this.resize(e)
     this.TOP.querySelector(".minimizeWindow").onclick = e => this.minimize(e)
-    this.preview.onclick = e => this.TOP.style.display = "flex"
+    this.preview.onclick = e => {
+      this.TOP.style.display = "flex"
+      this.bringForward()
+    }
 
     this.TOP.querySelector(".windowTopBar").onmousedown = e =>
       this.startDragging(e)
