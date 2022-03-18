@@ -1,5 +1,5 @@
 :root {
-    /*--window-border-radius: 3px;*/ /* we need to adjust maximized borders */
+    --window-border-radius: 13px; /* we need to adjust maximized borders */
     /*--window-border: 2px solid #222;*/
     --window-border: none;
     --iframe-pointer-event: auto;

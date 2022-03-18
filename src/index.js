@@ -17,6 +17,9 @@ async function starter() {
 	window.opu = "k"
 	let iv = launch("image-viewer")
 
+	iv.maximize()
+	// iv.unMaximize()
+
 	let custommsg = "hahahahahahah from top"
 
 	// onload overrides previously assigneds

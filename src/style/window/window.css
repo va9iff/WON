@@ -69,3 +69,38 @@
 		/*opacity: 1;*/
 	}
 }
+
+
+
+.window.maximized>.windowTopBar{
+}
+.window.maximized>.windowTopBar{
+    /*background-color: hsl(228deg, 20%, 50%);*/
+    /*--top-bar-thickness: 1.1rem;*/
+
+    border-radius: 0 !important;
+}
+.window.maximized{
+	border-radius: 0;
+    --x: 0 !important;
+    --y: 0 !important;
+    --w: 100% !important;
+    --h: 100% !important;
+}
+
+.window.snappedLeft{
+    --x: 0 !important;
+    --y: 0 !important;
+    --w: 50% !important;
+    --h: 100% !important;
+}
+
+.window.snappedRight{
+    --x	: 50% !important;
+    --y: 0 !important;
+    --w: 50% !important;
+    --h: 100% !important;
+}
+.window.snappedRight>.windowTopBar{
+    border-top-right-radius: 0;
+}

@@ -1,9 +1,10 @@
 .windowTopBar:active~.windowContent{
     /* it's already set in windowcss */
     transform-origin: top;
-    transform: scale(0.8) translateY(2rem);
+    transform: scale(0.8) translateY(1rem);
     border-radius: 1.3rem;
     overflow: hidden;
+    background-color: #2225;
 }
 
 .windowTopBar:active>.windowTopBarLeft{
@@ -27,7 +28,7 @@
     /*padding: 3px;*/
     display: flex;
     flex-direction: row;
-    border-radius: var(--window-border-radius) var(--window-border-radius) 0 0;
+    /*border-radius: var(--window-border-radius) var(--window-border-radius) 0 0;*/
 
     user-select: none;
 }

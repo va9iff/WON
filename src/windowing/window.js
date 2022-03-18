@@ -91,7 +91,7 @@ export class Window {
     this.TOP.style.setProperty("--w", this.w + "px")
     this.TOP.style.setProperty("--h", this.h + "px")
 
-    console.log(this.TOP)
+    // console.log(this.TOP)
   }
   close(e) {
     this.TOP.remove()
@@ -103,32 +103,28 @@ export class Window {
     this.preview.remove()
     refreshAppPreviewIcon(this.app)
   }
-  maximize(){
-    this.TOP.style.setProperty("--x", 0)
-    this.TOP.style.setProperty("--y", 0)
-
-    // this.TOP.style.setProperty("--w", "100%")
-    // this.TOP.style.setProperty("--h", "100%")
-
-    this.TOP.style.width = "100%"
-    this.TOP.style.height = "100%"
-    // !!
-    // this.TOP.style.setProperty("--window-border-radius", 0)
-
-    this.isMaximized = true
-    // we don't need to track the previous. we don't change them.
-    // 0 is 0 and 100% is even string. just override the styles for now.
-  }
-  unMaximize(){ //woah how useful function
-    this.isMaximized = false
-    this.refresh()
-  }
-  resize(){
+  checkMaximize(){
     if (!this.isMaximized) return this.maximize()
+    this.unMaximize()
+  }
+  maximize() {
+    this.TOP.classList.add('maximized')
+    this.isMaximized = true
+  }
+  unMaximize() { //woah how useful function
+    this.y = 0
     this.isMaximized = false
+    // this.TOP.style.borderRadius = '50%'
+    this.TOP.classList.remove('maximized')
+    this.TOP.classList.remove('snappedLeft')
+    this.TOP.classList.remove('snappedRight')
     this.refresh()
   }
-  bringForward(){
+  resize(e) {
+    this.checkMaximize()
+    // this.refresh()
+  }
+  bringForward() {
     this.TOP.style.zIndex = topZ++
   }
   addListeners() {
@@ -146,11 +142,26 @@ export class Window {
       this.bringForward()
     }
 
-    this.TOP.querySelector(".windowTopBar").onmousedown = e =>
+    this.topBar = this.TOP.querySelector(".windowTopBar")
+    this.topBar.onmousedown = e =>{
       this.startDragging(e)
+    }
+    this.topBar.ondblclick = e =>{
+      this.checkMaximize()
+    }
   }
-  minimize(){
+  minimize() {
     this.TOP.style.display = "none"
+  }
+  snapLeft() {
+    this.isMaximized = true
+    this.TOP.classList.add('snappedLeft')
+    this.refresh()
+  }
+  snapRight() {
+    this.isMaximized = true
+    this.TOP.classList.add('snappedRight')
+    this.refresh()
   }
   addStartBarPreview() {}
 
@@ -169,8 +180,25 @@ export class Window {
     document.onmouseup = null
     document.onmousemove = null
     document.documentElement.style.setProperty("--iframe-pointer-event", "auto")
+
+    // maximize on top snap
+    if(this.y<0) this.maximize()
+    // snap sides
+    if(this.x+this.w/4<0) this.snapLeft()
+    if(this.x>window.innerWidth-this.w/4*3) this.snapRight()
+    // minimize on bottom snap
+    if(this.y>window.innerHeight-30) {
+      this.minimize()
+      this.y = 0
+      this.refresh()
+    }
   }
   drag(e) {
+    if(this.isMaximized) {
+      this.unMaximize()
+      this.x = e.clientX - this.w/2
+      // this.refresh()
+    }
     e = e || window.event
     e.preventDefault()
     this.dx = e.clientX - this.startX
@@ -181,13 +209,8 @@ export class Window {
     this.startY = e.clientY
 
     this.x = this.x + this.dx
-    this.y = this.y + this.dy
-
-    // set the element's new position:
-    // this.TOP.style.setProperty("--x", this.x + "px")
-    // this.TOP.style.setProperty("--y", this.y + "px")
-    // elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    this.isMaximized=false
+    this.y = this.y + this.dy    
+    
     this.refresh()
   }
 }
