@@ -111,6 +111,9 @@ export class Window {
     this.TOP.classList.add('maximized')
     this.isMaximized = true
   }
+  // TODO !!!! custom resize logic to modify .w and .h.
+  // native resize collides cuz it's inline
+  // we've made it work, but we need resizer for all sides too.
   unMaximize() { //woah how useful function
     this.y = 0
     this.isMaximized = false
@@ -167,6 +170,10 @@ export class Window {
 
   // draggabmle window feature
   startDragging(e) {
+    if(!this.isMaximized){
+      this.w = this.TOP.getBoundingClientRect().width
+      this.h = this.TOP.getBoundingClientRect().height
+    }
     e.preventDefault()
     // get the mouse cursor position at startup:
     this.startX = e.clientX
@@ -210,7 +217,7 @@ export class Window {
 
     this.x = this.x + this.dx
     this.y = this.y + this.dy    
-    
+
     this.refresh()
   }
 }
