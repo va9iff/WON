@@ -1,0 +1,14 @@
+#startButton{
+	/*background-color: red;*/
+	background: none;
+	border: none;
+	width: var(--startbar-height);
+	color: #eee;
+	transform: scale(0.8);
+}
+
+#startButton:hover{
+	color: #222;
+	background: #ddd;
+	border-radius: 0.7rem;
+}
