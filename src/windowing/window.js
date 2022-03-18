@@ -115,7 +115,6 @@ export class Window {
   // native resize collides cuz it's inline
   // we've made it work, but we need resizer for all sides too.
   unMaximize() { //woah how useful function
-    this.y = 0
     this.isMaximized = false
     // this.TOP.style.borderRadius = '50%'
     this.TOP.classList.remove('maximized')
@@ -202,6 +201,7 @@ export class Window {
   }
   drag(e) {
     if(this.isMaximized) {
+      this.y = 0
       this.unMaximize()
       this.x = e.clientX - this.w/2
       // this.refresh()
