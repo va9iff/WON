@@ -10,10 +10,20 @@
 .windowTopBar:active>.windowTopBarLeft{
     transform: translateX(-100%);
 }
+.windowTopBar>.windowTopTitleBar{
+    transition-duration: 500ms;
+    transform: scale(1.0);
+}
+.windowTopBar:active>.windowTopTitleBar{
+    transition-timing-function: ease-out;
+    transition-duration: 120ms;
+    transform: scale(1.2);
+}
+
 .windowTopBar:active{
     /*background-color: hsl(228deg, 40%, 60%);*/
     /*box-shadow: 0 0 0.8rem hsl(228deg, 20%, 10%) inset;*/
-    letter-spacing: 0.2rem;
+    /*letter-spacing: 0.2rem;*/
     /*font-size: 1.2rem;*/
     box-shadow: 0 0 0 1px #cccc inset;
     background-color: hsl(228deg, 20%, 60%);

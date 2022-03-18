@@ -115,6 +115,8 @@ export class Window {
   // native resize collides cuz it's inline
   // we've made it work, but we need resizer for all sides too.
   unMaximize() { //woah how useful function
+    if(this.y<0) this.y = 0
+    // if(this.x>window.innerWidth-this.wi) this.x = -this.w/2
     this.isMaximized = false
     // this.TOP.style.borderRadius = '50%'
     this.TOP.classList.remove('maximized')
@@ -157,11 +159,13 @@ export class Window {
   }
   snapLeft() {
     this.isMaximized = true
+    this.x = -this.w/4
     this.TOP.classList.add('snappedLeft')
     this.refresh()
   }
   snapRight() {
     this.isMaximized = true
+    this.x = window.innerWidth-this.w/4*3
     this.TOP.classList.add('snappedRight')
     this.refresh()
   }

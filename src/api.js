@@ -1,4 +1,5 @@
 // const WONU = "http://127.0.0.1:5000/" //export
+// const WONU = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location.search
 const WONU = window.location.href
 
 async function browse(path="tmp") {

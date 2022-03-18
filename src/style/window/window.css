@@ -24,7 +24,9 @@
 
 	animation-name: window-opening-animation;
 	transition-duration: 120ms; /* for maximizing and etc. */
+	/*transform-origin: center;*/
 	/*transition-timing-function: linear;*/
+	transition-timing-function: cubic-bezier(0.0, 1.0, 1.0, 1.0);
 	animation-duration: 220ms;
 	/*animation-fill-mode: forwards;*/
 }
