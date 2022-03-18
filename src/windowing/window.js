@@ -11,6 +11,11 @@ import {addWindowPreview} from '../windowPreviewController.js'
 
 let desktop = document.querySelector("#desktop")
 
+let maximizeSnapHighligt = document.querySelector("#maximizeSnapHighligt")
+let leftSnapHighligt = document.querySelector("#leftSnapHighligt")
+let rightSnapHighligt = document.querySelector("#rightSnapHighligt")
+
+
 var topZ = 0
 
 export class Window {
@@ -110,6 +115,7 @@ export class Window {
   maximize() {
     this.TOP.classList.add('maximized')
     this.isMaximized = true
+    this.hideSnapHighlights()
   }
   // TODO !!!! custom resize logic to modify .w and .h.
   // native resize collides cuz it's inline
@@ -161,12 +167,14 @@ export class Window {
     this.isMaximized = true
     this.x = -this.w/4
     this.TOP.classList.add('snappedLeft')
+    this.hideSnapHighlights()
     this.refresh()
   }
   snapRight() {
     this.isMaximized = true
     this.x = window.innerWidth-this.w/4*3
     this.TOP.classList.add('snappedRight')
+    this.hideSnapHighlights()
     this.refresh()
   }
   addStartBarPreview() {}
@@ -203,7 +211,35 @@ export class Window {
       this.refresh()
     }
   }
+  hideSnapHighlights(){
+    maximizeSnapHighligt.classList.remove("highlight")
+    leftSnapHighligt.classList.remove("highlight")
+    rightSnapHighligt.classList.remove("highlight")
+  }
+  checkSnapHighlights(e){
+    if(this.x+this.w/4<0) {
+      this.hideSnapHighlights()
+      return leftSnapHighligt.classList.add("highlight")
+    }
+    if(this.x>window.innerWidth-this.w/4*3) {
+      this.hideSnapHighlights()
+      return rightSnapHighligt.classList.add("highlight")
+    }
+    if(this.y<0) {
+      this.hideSnapHighlights()
+      return maximizeSnapHighligt.classList.add("highlight")
+    }
+
+    this.hideSnapHighlights()
+
+
+    // minimize on bottom snap
+    // if(this.y>window.innerHeight-30) {
+
+
+  }
   drag(e) {
+    this.checkSnapHighlights()
     if(this.isMaximized) {
       this.y = 0
       this.unMaximize()

@@ -1,0 +1,69 @@
+#leftSnapHighligt,
+#rightSnapHighligt,
+#maximizeSnapHighligt
+{
+	position: absolute;
+	transform: scale(0);
+	width: 0;
+	height: 0;
+	pointer-events: none;
+	opacity: 0.5;
+	z-index: 999999;
+	border: 3px solid #ccc;
+	transition-duration: 340ms;
+	/*border-radius: 50%;*/
+	border-radius: 2rem;
+}
+
+#leftSnapHighligt.highlight,
+#rightSnapHighligt.highlight,
+#maximizeSnapHighligt.highlight
+{
+	opacity: 1;
+	transform: scale(0.98) rotate(0);
+	border-radius: calc(var(--window-border-radius) * 2);
+	background-color: #eee4;
+	box-shadow: 0 0 0 0 #bbb0;
+
+}
+
+
+#leftSnapHighligt{
+	top: 50%;
+	left: 0;
+	box-shadow: -100px 0 0 150px #bbb6;
+}
+
+#leftSnapHighligt.highlight{
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+}
+
+
+#maximizeSnapHighligt{
+	top: 0;
+	left: 50%;
+	box-shadow: 0 -100px 0 150px #bbb6;
+}
+
+#maximizeSnapHighligt.highlight{
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#rightSnapHighligt{
+	top: 50%;
+	left: 100%;
+	box-shadow: 100px 0 0 150px #bbb6;
+}
+
+#rightSnapHighligt.highlight{
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+}
