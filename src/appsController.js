@@ -71,4 +71,12 @@ export async function loadApps() {
 }
 
 
+export async function openWith(appName, file){
+	let app = launch(appName)
+	app.frame.contentWindow.addEventListener("load", ()=>{
+		app.frame.contentWindow.openWith(file)
+	})
+}
+
+
 window.launch = launch

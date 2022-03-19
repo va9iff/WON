@@ -1,6 +1,6 @@
 import { Window } from "./windowing/window.js"
 import { desktopIcon } from "./desktop/desktopIcons.js"
-import { APPS, launch, loadApps, loadApp } from "./appsController.js"
+import { APPS, launch, openWith, loadApps, loadApp } from "./appsController.js"
 
 async function starter() {
 	await loadApps()
@@ -15,16 +15,18 @@ async function starter() {
 	// filesWin.TOP.style.height = "100%"
 
 	window.opu = "k"
-	let iv = launch("image-viewer")
+	// let iv = launch("image-viewer")
 
-	iv.maximize()
+	// iv.maximize()
 	// iv.unMaximize()
 
 	let custommsg = "hahahahahahah from top"
 
 	// onload overrides previously assigneds
-	iv.frame.contentWindow.addEventListener("load", ()=> iv.frame.contentWindow.openWith(custommsg))
-	iv.frame.contentWindow.addEventListener("load", ()=> iv.frame.contentWindow.wantingFromWon("I order p"))
+	
+	openWith("image-viewer","fasd asd asd asdf")
+
+	// iv.frame.contentWindow.addEventListener("load", ()=> iv.frame.contentWindow.wantingFromWon("I order p"))
 	
 
 }
