@@ -151,6 +151,7 @@ export class Window {
     this.TOP.querySelector(".resizeWindow").onclick = e => this.resize(e)
     this.TOP.querySelector(".minimizeWindow").onclick = e => this.minimize(e)
     this.preview.onclick = e => this.unMinimize()
+    // this.preview.onmouseover = e => this.bringForward()
 
     this.topBar = this.TOP.querySelector(".windowTopBar")
     this.topBar.onmousedown = e =>{
