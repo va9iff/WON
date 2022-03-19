@@ -147,10 +147,7 @@ export class Window {
 
     this.TOP.querySelector(".resizeWindow").onclick = e => this.resize(e)
     this.TOP.querySelector(".minimizeWindow").onclick = e => this.minimize(e)
-    this.preview.onclick = e => {
-      this.TOP.style.display = "flex"
-      this.bringForward()
-    }
+    this.preview.onclick = e => this.unMinimize()
 
     this.topBar = this.TOP.querySelector(".windowTopBar")
     this.topBar.onmousedown = e =>{
@@ -160,8 +157,17 @@ export class Window {
       this.checkMaximize()
     }
   }
+  unMinimize() {
+    this.TOP.style.display = "flex"
+    this.bringForward()
+    if (this.minimizingID) clearTimeout(this.minimizingID)
+    this.TOP.classList.remove("minimizing")
+  }
+  minimizingID = null
   minimize() {
-    this.TOP.style.display = "none"
+    this.TOP.classList.add("minimizing")
+    clearTimeout(this.minimizingID)
+    this.minimizingID = setTimeout(()=>this.TOP.style.display = "none",220)
   }
   snapLeft() {
     this.isMaximized = true
@@ -207,7 +213,7 @@ export class Window {
     // minimize on bottom snap
     if(this.y>window.innerHeight-30) {
       this.minimize()
-      this.y = 0
+      this.y = window.innerHeight - this.h - 70
       this.refresh()
     }
   }

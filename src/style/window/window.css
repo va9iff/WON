@@ -75,6 +75,21 @@
 }
 
 
+.minimizing{
+	animation-name: minimizingAnim;
+	animation-duration: 200ms;
+	animation-fill-mode: forwards;
+}
+
+@keyframes minimizingAnim{
+	from{
+		transform: translateY(0);
+		opacity: 1;
+	}to{
+		transform: translateY(10%);
+		opacity: 0;
+	}
+}
 
 .window.maximized>.windowTopBar{
 }
