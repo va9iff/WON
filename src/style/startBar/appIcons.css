@@ -27,7 +27,7 @@
     min-width: var(--startbar-height);
 
     animation-name: appIconAppearAnimation;
-    animation-duration: 700ms;
+    animation-duration: 300ms;
 
     overflow: hidden;
 }
@@ -71,18 +71,27 @@
     justify-content: center;
     /* background-color: #4444; */
 
+    user-select: none;
     transform-origin: bottom;
-    transition-duration: 300ms;
-    transition-delay: 16ms;
-    transform: scale(0.7, 0);
-    opacity: 0.4;
+    transition-timing-function: ease-in;
+    transition-duration: 600ms;
+    /*transition-delay: 16ms;*/
+    /*transform: scale(-1.3, 0) translateY(calc((100%) - 4.5 * var(--startbar-height)));*/
+    transform: scale(0.4, 0);
+    opacity: 0;
 }
+
+/*.startBarAppIcon:hover > .appsBarContainer > .centeredAppPreviewContainer > .appPreview {*/
+    /*border-radius: 50%;*/
+    /*box-shadow: 0 10px #2222;*/
+/*}*/
 
 .startBarAppIcon:hover > .appsBarContainer {
     /* border: 2px solid #eeed; */
-    transform: scaleX(1);
+    transform: scale(1);
     opacity: 1;
     transition-delay: 120ms;
+    /*!!*/
     transition-duration: 500ms;
     transition-timing-function: cubic-bezier(0.57, 0.82, 0.165, 1);
 }
@@ -107,8 +116,13 @@
 .appsBarContainer {
 }
 
+/*.startBarAppIcon:hover > .appsBarContainer > .centeredAppPreviewContainer > .appPreview {*/
+    /*transition-duration: 800ms;*/
+    /*opacity: 1;*/
+/*}*/
+
 .appPreview {
-    opacity: 0.85;
+    opacity: 0.8;
     transition-duration: 200ms;
     transform: scale(1);
     border-radius: 7px;
@@ -138,7 +152,8 @@ so we a centered element which doesn't centers inner elements.
 
 /* Track */
 .centeredAppPreviewContainer::-webkit-scrollbar-track {
-    background: #98b4aa;
+    /*background: #98b4aa;*/
+    background: #98b4aa00;
     border-radius: 2rem;
 }
 

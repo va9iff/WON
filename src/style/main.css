@@ -1,3 +1,9 @@
+body{
+        /* for keeping sizes consistend and see if something goes overflow */
+    overflow: scroll;
+
+}
+
 #main{
     background-color: #222;
     width: 100%;

@@ -1,7 +1,10 @@
 #startButton{
-	/*background-color: red;*/
+	position: absolute;
 	background: none;
 	border: none;
+	bottom: 0;
+	left: 0;
+	height: var(--startbar-height);
 	width: var(--startbar-height);
 	color: #eee;
 	transform: scale(0.8);
@@ -12,3 +15,9 @@
 	background: #ddd;
 	border-radius: 0.7rem;
 }
+
+/*#startButton:active{*/
+	/*transition-duration: 60ms;*/
+	/*border-radius: 0.4rem;*/
+	/*transform: scale(0.88);*/
+/*}*/
