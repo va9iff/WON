@@ -8,6 +8,8 @@ import { addAppPreviewIcon, refreshAppPreviewIcon } from "./previewIconControlle
 import { desktopIcon } from "./desktop/desktopIcons.js"
 import { Window } from "./windowing/window.js"
 
+import {requireFile} from "./WONfun.js"
+
 export var appsToLoad = ["example", "files", "image-viewer"]
 
 export async function importAppModule(name) {
@@ -27,9 +29,18 @@ export function appify(app){
 	return app
 }
 
+function WONfunify(window){
+	window.frame.contentWindow.WON={}
+	window.frame.contentWindow.requireFile=requireFile
+
+}
+
 export function launch(appName){
 	let app = APPS[appName]
 	let win = new Window(app,app.home)
+
+	WONfunify(win)
+
 	return win
 
 }

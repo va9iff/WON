@@ -1,7 +1,7 @@
 import { Window } from "./windowing/window.js"
 import { desktopIcon } from "./desktop/desktopIcons.js"
 import { APPS, launch, openWith, loadApps, loadApp } from "./appsController.js"
-
+import {requireFile} from "./WONfun.js"
 async function starter() {
 	await loadApps()
 
@@ -23,7 +23,7 @@ async function starter() {
 	let custommsg = "hahahahahahah from top"
 
 	// onload overrides previously assigneds
-	
+
 	openWith("image-viewer","fasd asd asd asdf")
 
 	// iv.frame.contentWindow.addEventListener("load", ()=> iv.frame.contentWindow.wantingFromWon("I order p"))
