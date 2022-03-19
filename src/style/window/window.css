@@ -75,7 +75,23 @@
 }
 
 
-.minimizing{
+.window.closing{
+	animation-name: closingAnim;
+	animation-duration: 200ms;
+	animation-fill-mode: forwards;
+}
+
+@keyframes closingAnim{
+	from{
+		transform: scale(1.0);
+		opacity: 1;
+	}to{
+		transform: scale(0);
+		opacity: 0;
+	}
+}
+
+.window.minimizing{
 	animation-name: minimizingAnim;
 	animation-duration: 200ms;
 	animation-fill-mode: forwards;

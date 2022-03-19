@@ -98,8 +98,11 @@ export class Window {
 
     // console.log(this.TOP)
   }
+  // tbh we don't need closing anim id. we won't cancel closing, but whatever.
+  closingID = null
   close(e) {
-    this.TOP.remove()
+    this.TOP.classList.add("closing")
+    this.closingID = setTimeout(()=>this.TOP.remove(), 220)
     console.log("close", this.app.name)
     // !!anmapp
     if(this.app.windows)this.app.windows = this.app.windows.filter(
@@ -160,7 +163,10 @@ export class Window {
   unMinimize() {
     this.TOP.style.display = "flex"
     this.bringForward()
-    if (this.minimizingID) clearTimeout(this.minimizingID)
+    if (this.minimizingID) {
+      clearTimeout(this.minimizingID)
+      this.minimizingID = null
+    }
     this.TOP.classList.remove("minimizing")
   }
   minimizingID = null
