@@ -15,6 +15,7 @@ let maximizeSnapHighligt = document.querySelector("#maximizeSnapHighligt")
 let leftSnapHighligt = document.querySelector("#leftSnapHighligt")
 let rightSnapHighligt = document.querySelector("#rightSnapHighligt")
 
+let startBar = document.querySelector("#startBar")
 
 var topZ = 0
 
@@ -218,7 +219,7 @@ export class Window {
     if(this.x+this.w/4<0 || event.clientX<30) this.snapLeft()
     if(this.x>window.innerWidth-this.w/4*3 || event.clientX> window.innerWidth - 30) this.snapRight()
     // minimize on bottom snap
-    if(this.y>window.innerHeight-30) {
+    if(this.y>window.innerHeight - startBar.getBoundingClientRect().height * 1.5) {
       this.minimize()
       this.y = window.innerHeight - this.h - 70
       this.refresh()
