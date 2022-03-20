@@ -73,7 +73,7 @@
 
     user-select: none;
     transform-origin: bottom;
-    transition-timing-function: ease-in;
+    transition-timing-function: ease;
     transition-duration: 600ms;
     /*transition-delay: 16ms;*/
     /*transform: scale(-1.3, 0) translateY(calc((100%) - 4.5 * var(--startbar-height)));*/
