@@ -1,9 +1,18 @@
 import {launch} from "./appsController.js"
 
 export function requireFile(){
-	launch("files")
 	let prms = new Promise((res,rej)=>{
-		setTimeout(res("resolved from requireFile promise"),3000)
+		let win = launch("requireFile")
+		win.frame.contentWindow.resolve = (arg)=> {
+			res(arg)
+			win.close()
+		}
+		win.frame.contentWindow.reject = (arg)=> {
+			rej(arg)
+			win.close()
+		}
+
+		// setTimeout(res("resolved from requireFile promise"),3000)
 	})
 	return prms
 }

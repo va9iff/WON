@@ -8,18 +8,25 @@
 <body>
 		<script type="text/javascript">
 
-		;(async ()=>{
-			console.log('before k')
-			let k = requireFile()
-			k.then(r=>console.log(r))
-			console.log(k)
-			console.log("after k")
-		})()
+		// ;(async ()=>{
+		// 	console.log('before k')
+		// 	let k = requireFile()
+		// 	k.then(r=>console.log(r))
+		// 	console.log(k)
+		// 	console.log("after k")
+		// })()
 
 
-		function openWith(opening){
-			console.log(opening)
+		// function openWith(opening){
+		// 	console.log(opening)
+		// }
+
+		async function s (){
+			let f = await requireFile()
+			console.log(f)
+			document.body.innerHTML += f
 		}
+		s()
 
 	</script>
 
