@@ -10,7 +10,7 @@ import { Window } from "./windowing/window.js"
 
 import {requireFile} from "./WONfun.js"
 
-export var appsToLoad = ["example", "files", "image-viewer"]
+export var appsToLoad = ["example", "files", "image-viewer", "requireFile"]
 
 export async function importAppModule(name) {
 	let path = `./apps/${name}/app.js`
@@ -48,6 +48,7 @@ export function launch(appName){
 export function loadApp(appModule) {
 	let app = appModule
 	app = appify(app) // fix the missed keys
+	if (APPS[app.name]) return console.error('existing name while loading app "'+app.name+'"')
 	APPS[app.name] = app
 	// assign fileicons, openwith and similar stuff
 	formatAppUrls(app)
@@ -77,7 +78,7 @@ export async function loadApps() {
 	for (let appName of appsToLoad) {
 		let importedApp = await importAppModule(appName)
 		loadApp(importedApp.default)
-		new desktopIcon(APPS[appName]).add()
+		if (APPS[appName].desktopIcon) (new desktopIcon(APPS[appName]).add())
 	}
 }
 
@@ -91,3 +92,5 @@ export async function openWith(appName, file){
 
 
 window.launch = launch
+
+window.APPS = APPS

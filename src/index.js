@@ -24,7 +24,8 @@ async function starter() {
 
 	// onload overrides previously assigneds
 
-	openWith("image-viewer","fasd asd asd asdf")
+	// openWith("image-viewer","fasd asd asd asdf")
+	launch("example")
 
 	// iv.frame.contentWindow.addEventListener("load", ()=> iv.frame.contentWindow.wantingFromWon("I order p"))
 	

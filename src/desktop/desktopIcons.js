@@ -7,13 +7,13 @@ export class desktopIcon{
 	constructor(app){
 		this.app = app
 		this.icon = document.createElement('button')
-		app.desktopIcon = this.icon
-		app.desktopIcon.className = "dekstopIcon example1"
-		app.desktopIcon.innerHTML = `
+		app.desktopIcon = this
+		this.icon.className = "dekstopIcon example1"
+		this.icon.innerHTML = `
           <img src="${app.icon}" class="desktopIconImage"></img>
           <h3 class="desktopIconCaption">${app.name}</h3>
         `
-        app.desktopIcon.ondblclick = ()=> launch(app.name)
+        this.icon.ondblclick = ()=> launch(app.name)
 	}
 	add(){
 		desktopAppIcons.appendChild(this.icon)

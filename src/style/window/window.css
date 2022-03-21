@@ -123,9 +123,11 @@
     --h: 100% !important;
 }
 
+.window.maximized,
 .window.snappedLeft,
 .window.snappedRight{
 	border-radius: 0;
+	resize: none;
 }
 
 .window.snappedLeft{
@@ -133,6 +135,7 @@
     --y: 0 !important;
     --w: 50% !important;
     --h: 100% !important;
+    box-shadow: 1px 0 4px 0 #0002;
 }
 
 .window.snappedRight{
@@ -140,6 +143,7 @@
     --y: 0 !important;
     --w: 50% !important;
     --h: 100% !important;
+    box-shadow: -1px 0 4px 0 #0002;
 }
 .window.snappedRight>.windowTopBar{
     border-top-right-radius: 0;
