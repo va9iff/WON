@@ -14,8 +14,11 @@
 }
 
 .startBarAppIcon {
+    border: none; /*for button*/
+    color: inherit;
+
     background-color: #444;
-    transition: 260ms;
+    transition-duration: 260ms;
     border-radius: 0.4rem;
     padding: 0.2rem;
     margin: var(--app-bar-icon-margin);
@@ -54,9 +57,10 @@
 }
 
 .startBarAppIcon:hover {
+    z-index: 999;
     /* border: 4px solid #888; */
     background-color: #888;
-    transition: 160;
+    transition-duration: 160ms;
 }
 
 .appsBarContainer {
@@ -74,8 +78,7 @@
     user-select: none;
     transform-origin: bottom;
     transition-timing-function: ease;
-    transition-duration: 600ms;
-    /*transition-delay: 16ms;*/
+    transition-duration: 160ms;
     /*transform: scale(-1.3, 0) translateY(calc((100%) - 4.5 * var(--startbar-height)));*/
     transform: scale(0.4, 0);
     opacity: 0;
@@ -86,14 +89,23 @@
     /*box-shadow: 0 10px #2222;*/
 /*}*/
 
+.startBarAppIcon > .appsBarContainer > .centeredAppPreviewContainer > .appPreview{
+    transform: scale(-1, 1);
+}
+/*!!*/
+/*.startBarAppIcon:focus > .appsBarContainer > .centeredAppPreviewContainer > .appPreview,*/
+.startBarAppIcon:hover > .appsBarContainer > .centeredAppPreviewContainer > .appPreview{
+    /*background-color: red;*/
+    transform: scale(1);
+    transition-duration: 500ms;
+}
+
 .startBarAppIcon:hover > .appsBarContainer {
     /* border: 2px solid #eeed; */
     transform: scale(1);
     opacity: 1;
-    transition-delay: 120ms;
-    /*!!*/
-    transition-duration: 500ms;
-    transition-timing-function: cubic-bezier(0.57, 0.82, 0.165, 1);
+    transition-duration: 600ms;
+    transition-timing-function: cubic-bezier(0.27, 0.82, 0.165, 1);
 }
 
 /* @keyframes appPreviewBring {
@@ -122,7 +134,7 @@
 /*}*/
 
 .appPreview {
-    opacity: 0.8;
+    /*opacity: 0.8;*/
     transition-duration: 200ms;
     transform: scale(1);
     border-radius: 7px;
@@ -130,7 +142,8 @@
 
 .appPreview:hover {
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.2) !important; 
+    transition-duration: 200ms !important;
     border: 2px solid #eeea;
 }
 
@@ -173,7 +186,7 @@ so we a centered element which doesn't centers inner elements.
     display: flex;
     max-width: 100%;
     overflow-x: scroll;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 
@@ -191,4 +204,33 @@ so we a centered element which doesn't centers inner elements.
     /*background-color: hsl(150, 50%, 50%);*/
     background-color: hsl(150, 100%, 68%);
     /*border: 1px solid #333;*/
+    padding-right: calc(2 * var(--startbar-height)); /* 1 for won 1 for github profile pic from left. 
+    lor maybe we can change it to all in the middle */
+}
+
+
+
+/*!!*/
+/*#appsBar>.startBarAppIcon:focus{*/
+    /*box-shadow: 0 0 0 2px #eeea inset;*/
+/**/
+/*}*/
+
+/*#appsBar>.startBarAppIcon:hover:focus{*/
+/*}*/
+
+
+/*!!*/
+/*#appsBar>.startBarAppIcon:focus>.appsBarContainer,*/
+.startBarAppIcon:active > .appsBarContainer > .centeredAppPreviewContainer > .appPreview,
+.startBarAppIcon:active>.appsBarContainer{
+/*.startBarAppIcon:active>.appsBarContainer>.centeredAppPreviewContainer  {
+    /*background-color: red;*/
+    transform: scale(1);
+    opacity: 1;
+    /*transform: unset !important;*/
+
+    /*transition-duration: none;*/
+    transition: none ;
+    /*transform: scale(1);*/
 }
