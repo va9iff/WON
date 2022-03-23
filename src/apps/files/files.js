@@ -98,7 +98,12 @@ async function refresh() {
 	console.log(path)
 	let response = await browse(path)
 
-	if (response.file) return downloadFile(response.file)
+	if (response.file) {
+		let blob = response.file
+		return resolve.file(blob)
+		// resolve(56789)
+		return downloadFile(blob)
+	}
 
 	let folder = response.directory
 	files_container.innerHTML = ""

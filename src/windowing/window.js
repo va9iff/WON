@@ -86,6 +86,11 @@ export class Window {
 
 		this.refresh()
 	}
+	refreshPos(){
+		this.TOP.style.setProperty("--x", this.x + "px")
+		this.TOP.style.setProperty("--y", this.y + "px")
+
+	}
 	refresh() {
 		this.TOP.style.width = "var(--w)"
 		this.TOP.style.height = "var(--h)"
@@ -261,8 +266,8 @@ export class Window {
 		) {
 			this.minimize()
 			this.y = window.innerHeight - this.h - 70
-			this.refresh()
 		}
+			this.refresh()
 	}
 	drag(e) {
 		this.checkSnapHighlights()
@@ -284,6 +289,12 @@ export class Window {
 		this.x = this.x + this.dx
 		this.y = this.y + this.dy
 
-		this.refresh()
+		// !!
+		// this.w = this.TOP.getBoundingClientRect().width
+		// this.h = this.TOP.getBoundingClientRect().height
+
+		// !!
+		// this.refresh()
+		this.refreshPos()
 	}
 }

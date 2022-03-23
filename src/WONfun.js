@@ -1,9 +1,13 @@
 import {launch} from "./appsController.js"
 
-export function requireFile(){
+export function require(appName, req){
 	let prms = new Promise((res,rej)=>{
-		let win = launch("requireFile")
-		win.frame.contentWindow.resolve = (arg)=> {
+		let win = launch("files")
+
+		win.frame.contentWindow.resolve = {}
+
+
+		win.frame.contentWindow.resolve[req] = (arg)=> {
 			res(arg)
 			win.close()
 		}

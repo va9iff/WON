@@ -52,11 +52,11 @@ async function browseOnGitHub(path = "") {
   if (k.download_url) {
     k.file = await fetch(k.download_url)
     k.file = await k.file.blob()
-    console.log("file",k)
+    // console.log("file",k)
     return k
   }
   k.directory = k.map(p=>p.name)
-  console.log("dir",k)
+  // console.log("dir",k)
   return k
 }
 

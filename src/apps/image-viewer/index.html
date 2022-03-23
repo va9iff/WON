@@ -6,6 +6,7 @@
 	<title>jj</title>
 </head>
 <body>
+		<img src="">
 		<script type="text/javascript">
 
 		// ;(async ()=>{
@@ -21,22 +22,28 @@
 		// 	console.log(opening)
 		// }
 
+		let img = document.querySelector("img")
+
 		async function s (){
-			let f = await requireFile()
-			console.log(f)
-			document.body.innerHTML += f
+			let imageBlob = await require("files","file")
+			img.src = window.URL.createObjectURL(imageBlob);
 		}
 		s()
 
 	</script>
 
 	<style type="text/css">
-				html{
-			background-color: #2226;
-			height: 100%;
+		*{
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
 		}
-
+		body{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #2227;
+		}
 	</style>
-	jkf
 </body>
 </html>

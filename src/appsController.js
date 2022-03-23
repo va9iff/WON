@@ -8,9 +8,9 @@ import { addAppPreviewIcon, refreshAppPreviewIcon } from "./previewIconControlle
 import { desktopIcon } from "./desktop/desktopIcons.js"
 import { Window } from "./windowing/window.js"
 
-import {requireFile} from "./WONfun.js"
+import {require} from "./WONfun.js"
 
-export var appsToLoad = ["example", "files", "image-viewer", "requireFile"]
+export var appsToLoad = ["example", "files", "image-viewer"]
 
 export async function importAppModule(name) {
 	let path = `./apps/${name}/app.js`
@@ -31,22 +31,31 @@ export function appify(app){
 
 function WONfunify(window){
 	window.frame.contentWindow.WON={}
-	window.frame.contentWindow.requireFile=requireFile
+	window.frame.contentWindow.require=require
 
 }
+
+function suppressResolve(win){
+	win.frame.contentWindow.resolve = {}
+}
+
+export function launchManual(app){
+	let win = new Window(app,app.home)
+
+	suppressResolve(win)
+	WONfunify(win)
+	return win
+}
+
 
 export function launch(appName){
 	let app = APPS[appName]
-	let win = new Window(app,app.home)
 
-	WONfunify(win)
-
-	return win
-
+	return launchManual(app)
 }
 
-export function loadApp(appModule) {
-	let app = appModule
+export function loadApp(appJson) {
+	let app = appJson
 	app = appify(app) // fix the missed keys
 	if (APPS[app.name]) return console.error('existing name while loading app "'+app.name+'"')
 	APPS[app.name] = app
@@ -54,6 +63,7 @@ export function loadApp(appModule) {
 	formatAppUrls(app)
 	addAppPreviewIcon(app)
 	refreshAppPreviewIcon(app)
+	return app
 }
 
 function formatUrl(app,[urls]){
