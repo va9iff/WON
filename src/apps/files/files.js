@@ -1,4 +1,6 @@
-const BASE = "http://127.0.0.1:8080/"
+// const BASE = "http://127.0.0.1:8080/"
+// import {URL} from "../../api.js"
+const BASE = url //from api.js but it's not module
 
 var files_container = document.querySelector("#files")
 // ! starting with > doesn't work on our flask app when we want file.
@@ -50,31 +52,53 @@ function downloadUsingAnchorElement(fileName, url) {
 	anchor.remove()
 }
 
+async function downloadFile(path) {
+	// it's not just frontent thing. it's related to flask backend.
+	let res = await fetch("http://127.0.0.1:5000/browse/"+path)
+	let blob = await res.blob()
+
+    var url = window.URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = currentPath.pop()
+    document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+    a.click();    
+    a.remove();  //afterwards we remove the element again         
+
+
+	console.log(blob)
+	anchorBlobDownloader(response)
+	currentPath.pop()
+	return response
+}
+
+async function downloadFileGitHub(blob) {
+    let url = window.URL.createObjectURL(blob);
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = currentPath.pop()
+    document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+    a.click();    
+    a.remove();  //afterwards we remove the element again         
+
+
+	// console.log(blob)
+	// anchorBlobDownloader(res)
+	// currentPath.pop()
+	return blob
+
+}
+
+// !!
+downloadFile = downloadFileGitHub
+
 async function refresh() {
 	// :4
-	let path = ".>" + currentPath.join(">")
+	let path = "./" + currentPath.join("/")
 	console.log(path)
 	let response = await browse(path)
 
-	if (!response.directory) {
-		// it's not just frontent thing. it's related to flask backend.
-		let res = await fetch("http://127.0.0.1:5000/browse/"+path)
-		let blob = await res.blob()
-
-        var url = window.URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = currentPath.pop()
-        document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
-        a.click();    
-        a.remove();  //afterwards we remove the element again         
-
-
-		console.log(blob)
-		anchorBlobDownloader(response)
-		currentPath.pop()
-		return response
-	}
+	if (response.file) return downloadFile(response.file)
 
 	let folder = response.directory
 	files_container.innerHTML = ""
