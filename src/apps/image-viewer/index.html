@@ -25,7 +25,8 @@
 		let img = document.querySelector("img")
 
 		async function s (){
-			let imageBlob = await require("files","file")
+			let response = await require("files","file")
+			let imageBlob = response.file
 			img.src = window.URL.createObjectURL(imageBlob);
 		}
 		s()

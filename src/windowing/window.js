@@ -108,7 +108,7 @@ export class Window {
 	close(e) {
 		this.TOP.classList.add("closing")
 		this.closingID = setTimeout(() => this.TOP.remove(), 220)
-		console.log("close", this.app.name)
+		console.log(`close "${this.app.name}" app`)
 		// !!anmapp
 		if (this.app.windows)
 			this.app.windows = this.app.windows.filter(w => w != this)

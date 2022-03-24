@@ -37,6 +37,8 @@ function WONfunify(window){
 
 function suppressResolve(win){
 	win.frame.contentWindow.resolve = {}
+	win.frame.contentWindow.resolve.try = ()=>{}
+
 }
 
 export function launchManual(app){

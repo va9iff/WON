@@ -1,0 +1,20 @@
+{
+	"folders":
+	[
+		{
+			"path": "../",
+			"folder_exclude_patterns": [".vscode"],
+		},
+	],
+	"settings":
+	{
+		"highlight_line": true,
+	},
+	"build_systems":
+	[
+		{
+			"name": "List",
+			"shell_cmd": "dir"
+		}
+	]
+}

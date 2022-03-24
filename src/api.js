@@ -50,6 +50,9 @@ async function browseOnGitHub(path = "") {
   k = await k.json()
   // make directory with k[n].name
   if (k.download_url) {
+    // git doesn't provides the mime type, 
+    // so we implicityly download again from url.
+    // this way gives only the file, so mime is right.
     k.file = await fetch(k.download_url)
     k.file = await k.file.blob()
     // console.log("file",k)

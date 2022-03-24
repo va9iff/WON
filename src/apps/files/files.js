@@ -99,9 +99,11 @@ async function refresh() {
 	let response = await browse(path)
 
 	if (response.file) {
+		// if(resolve.file) return resolve(response)
+		// console.log(resolve)
+		if (resolve.try("file",response)) return null
+
 		let blob = response.file
-		return resolve.file(blob)
-		// resolve(56789)
 		return downloadFile(blob)
 	}
 
