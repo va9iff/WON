@@ -13,7 +13,11 @@
     --top-bar-thickness:  2rem;
     --window-main-button-ratio: 1;
     --window-icon-ratio: 0.6;
-    
+
+    --ahue: 150deg; /*accent hue*/
+    /*--asat: 100%;*/                                      /*accent saturation*/
+    /*--algh: 70%;*/                                       /*accent lightnes*/
+    /*--acc: hsl(var(--ahue), var(--asat), var(--algh));*/ /* accent color */
 
     --start-bar-z-index: 4000000;
 }
