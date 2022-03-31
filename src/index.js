@@ -25,7 +25,7 @@ async function starter() {
 	// onload overrides previously assigneds
 
 	// openWith("image-viewer","fasd asd asd asdf")
-	launch("image-viewer")
+	launch("code-viewer")
 
 
 

@@ -13,7 +13,8 @@ import {require} from "./WONfun.js"
 export var appsToLoad = [
 // "example", 
 "files", 
-"image-viewer"
+"image-viewer",
+"code-viewer"
 ]
 
 export async function importAppModule(name) {

@@ -1,3 +1,7 @@
+*{
+	font-family: nunito;
+}
+
 html{
 	background-color: #11111182;
 	/*background: linear-gradient(20deg, #0000, #4444);*/

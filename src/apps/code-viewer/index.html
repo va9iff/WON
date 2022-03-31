@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Code Viewer</title>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="./prism.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+	<p style = "color:#eee; font-family: nunito;">Code viewer. (currently only JavaScript files)</p>
+<pre>
+<code class="language-js">
+document.querySelector("#myid").innerHTML = k.ref()
+</code>
+	</pre>
+
+	<script>
+		async function s() {
+			try {
+				codepre = document.querySelector("code")
+				codenam = document.querySelector("p")
+				let response = await require("files", "file")
+				let code = response.file
+				codepre.innerHTML = await code.text()
+				codenam.innerHTML = response.path
+				console.log(response)
+				Prism.highlightAll()
+			} catch (err) {
+				console.trace(err)
+				self.close()
+			}
+		}
+		s()
+	</script>
+	<script src="./prism.js"></script>
+</body>
+</html>
