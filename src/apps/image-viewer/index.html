@@ -28,6 +28,8 @@
 
 		async function s (){
 			try{let response = await require("files","file")
+		document.querySelector("h1").remove()
+		document.querySelector("img").style.display = "flex"
 						let imageBlob = response.file
 						img.src = window.URL.createObjectURL(imageBlob);}
 						catch(err){
