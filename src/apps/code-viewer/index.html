@@ -13,7 +13,7 @@
 <body>
 	<p style = "color:#eee; font-family: nunito;">
 	Source code viewer. <br>
-	Waiting to get a file...
+	Waiting to get a file...g
 </p>
 <pre>
 <code class="language-js">
@@ -29,8 +29,11 @@ document.querySelector("#myCode").innerHTML = file.code()
 				let response = await require("files", "file")
 				let code = response.file
 				codepre.innerHTML = await code.text()
-				console.log(response.path.split(".").pop())
-				codepre.className = response.path.split(".").pop()
+				codepre.className = "language-"+response.path.split(".").pop()
+				// codepre.classList.remove("language-js")
+				// codepre.classList.remove(response.path.split(".").pop())
+
+				console.log(codepre.className)
 				codenam.innerHTML = response.path
 				console.log(response)
 				Prism.highlightAll()
