@@ -132,7 +132,7 @@
 .window.snappedLeft,
 .window.snappedRight{
 	border-radius: 0;
-	/*resize: none;*/
+	resize: none;
 }
 
 .window.snappedLeft{

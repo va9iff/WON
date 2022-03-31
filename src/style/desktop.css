@@ -6,6 +6,8 @@
  background: -webkit-linear-gradient(20deg, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
  background: linear-gradient(20deg, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+ /*background: #282828;*/
+
  width: 100%;
  height: calc(100% - var(--startbar-height));
 }

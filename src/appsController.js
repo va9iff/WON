@@ -10,7 +10,11 @@ import { Window } from "./windowing/window.js"
 
 import {require} from "./WONfun.js"
 
-export var appsToLoad = ["example", "files", "image-viewer"]
+export var appsToLoad = [
+// "example", 
+"files", 
+"image-viewer"
+]
 
 export async function importAppModule(name) {
 	let path = `./apps/${name}/app.js`
