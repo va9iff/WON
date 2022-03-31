@@ -115,7 +115,7 @@ async function refresh() {
 		let fileElement = document.createElement("div")
 		fileElement.className = "file"
 		fileElement.innerHTML = fileName
-		fileElement.onclick = fileClick
+		fileElement.ondblclick = fileClick
 		files_container.appendChild(fileElement)
 	}
 }

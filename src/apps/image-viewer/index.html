@@ -19,6 +19,9 @@
 					document.querySelector("img").style.display = "flex"
 					let imageBlob = response.file
 					img.src = window.URL.createObjectURL(imageBlob)
+					self.titleBar.innerHTML = response.path
+					self.preview.innerHTML = response.path.split("/").pop()
+
 				} catch (err) {
 					self.close()
 				}
