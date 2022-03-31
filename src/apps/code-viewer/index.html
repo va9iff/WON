@@ -12,8 +12,8 @@
 </head>
 <body>
 	<p style = "color:#eee; font-family: nunito;">
-	(currently can view only JavaScript syntax) <br>
-	Waiting to get a file.
+	Source code viewer. <br>
+	Waiting to get a file...
 </p>
 <pre>
 <code class="language-js">
@@ -29,6 +29,8 @@ document.querySelector("#myCode").innerHTML = file.code()
 				let response = await require("files", "file")
 				let code = response.file
 				codepre.innerHTML = await code.text()
+				console.log(response.path.split(".").pop())
+				codepre.className = response.path.split(".").pop()
 				codenam.innerHTML = response.path
 				console.log(response)
 				Prism.highlightAll()
