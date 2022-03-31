@@ -24,7 +24,7 @@ export function addAppPreviewIcon(app) {
 	appPreviewIconsBar.appendChild(app.startBarAppIcon)
 
 	// app icon
-	app.startBarAppIcon.innerHTML = app.name[0]
+	app.startBarAppIcon.innerHTML = `<img src="${app.icon}" alt="" style="height: 100%;">`
 
 	app.appsBarContainer = document.createElement("div")
 	app.appsBarContainer.id = app.name
