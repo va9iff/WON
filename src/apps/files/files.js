@@ -112,7 +112,7 @@ async function refresh() {
 	let folder = response.directory
 	files_container.innerHTML = ""
 	for (fileName of folder) {
-		let fileElement = document.createElement("div")
+		let fileElement = document.createElement("button")
 		fileElement.className = "file"
 		fileElement.innerHTML = fileName
 		fileElement.ondblclick = fileClick
