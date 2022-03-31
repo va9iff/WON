@@ -32,12 +32,16 @@ export function require(appName, req){
 
 		win.frame.contentWindow.reject = (arg)=> {
 			rej(arg)
-			win.close()
+			// win.close()
 		}
 		win.frame.contentWindow.resolve.try = (reqCase,arg)=> {
-			if(reqCase==req) {
-				resolver(win,arg,res)
-				return true
+try{			if(reqCase==req) {
+						resolver(win,arg,res)
+						return true
+					}
+		}	
+		catch(err){
+			rej()
 			}
 		}
 

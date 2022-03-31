@@ -71,6 +71,7 @@ export class Window {
     `
 		desktop.appendChild(this.TOP)
 		this.frame = this.TOP.querySelector("iframe")
+		this.frame.contentWindow.self = this
 
 		this.x = x
 		this.y = y
@@ -114,6 +115,7 @@ export class Window {
 			this.app.windows = this.app.windows.filter(w => w != this)
 		this.preview.remove()
 		refreshAppPreviewIcon(this.app)
+		if(this.frame.contentWindow.reject) this.frame.contentWindow.reject()
 	}
 	bringForward() {
 		this.TOP.style.zIndex = topZ++

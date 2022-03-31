@@ -12,7 +12,7 @@
 	position: relative;
 	border: none;
 	width: 5rem;
-	min-height: 5rem;
+	/*min-height: 5rem;*/
 	padding: 0.2rem;
 	margin: 0.5rem;
 	transition-duration: 120ms;
@@ -20,6 +20,12 @@
 
 	background-color: #0000;
 	/*background-color: red;*/
+	/**/
+	height: 7rem;
+	overflow: hidden;
+}
+.dekstopIcon:focus{
+	overflow: visible;
 }
 
 .dekstopIcon:hover{

@@ -2,6 +2,8 @@
 // import {URL} from "../../api.js"
 const BASE = url //from api.js but it's not module
 
+// reject()
+
 var files_container = document.querySelector("#files")
 // ! starting with > doesn't work on our flask app when we want file.
 var currentPath = []
@@ -131,7 +133,7 @@ function back() {
 
 document.querySelector(".back").onclick = back
 
-refresh("")
+refresh()
 
 // for (file of directory) {
 // let fileElement = document.createElement("div")
