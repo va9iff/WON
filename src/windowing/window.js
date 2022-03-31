@@ -71,6 +71,7 @@ export class Window {
     `
 		desktop.appendChild(this.TOP)
 		this.frame = this.TOP.querySelector("iframe")
+		this.titleBar = this.TOP.querySelector(".windowTopTitleBar")
 		this.frame.contentWindow.self = this
 
 		this.x = x

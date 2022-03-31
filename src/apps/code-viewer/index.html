@@ -11,12 +11,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 </head>
 <body>
-	<p style = "color:#eee; font-family: nunito;">
-	Source code viewer. <br>
-	Waiting to get a file...g
-</p>
 <pre>
 <code class="language-js">
+// waiting for getting a file...
 document.querySelector("#myCode").innerHTML = file.code()
 </code>
 	</pre>
@@ -30,6 +27,8 @@ document.querySelector("#myCode").innerHTML = file.code()
 				let code = response.file
 				codepre.innerHTML = await code.text()
 				codepre.className = "language-"+response.path.split(".").pop()
+				self.preview.innerHTML = response.path.split("/").pop()
+				self.titleBar.innerHTML = response.path.split("/").pop()
 				// codepre.classList.remove("language-js")
 				// codepre.classList.remove(response.path.split(".").pop())
 
