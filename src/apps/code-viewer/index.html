@@ -26,8 +26,8 @@ document.querySelector("#myCode").innerHTML = file.code()
 				let code = response.file
 				codepre.innerHTML = await code.text()
 				codepre.className = "language-"+response.path.split(".").pop()
+				self.titleBar.innerHTML = response.path
 				self.preview.innerHTML = response.path.split("/").pop()
-				self.titleBar.innerHTML = response.path.split("/").pop()
 				// codepre.classList.remove("language-js")
 				// codepre.classList.remove(response.path.split(".").pop())
 
