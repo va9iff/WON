@@ -22,7 +22,6 @@ document.querySelector("#myCode").innerHTML = file.code()
 		async function s() {
 			try {
 				codepre = document.querySelector("code")
-				codenam = document.querySelector("p")
 				let response = await require("files", "file")
 				let code = response.file
 				codepre.innerHTML = await code.text()
@@ -33,7 +32,6 @@ document.querySelector("#myCode").innerHTML = file.code()
 				// codepre.classList.remove(response.path.split(".").pop())
 
 				console.log(codepre.className)
-				codenam.innerHTML = response.path
 				console.log(response)
 				Prism.highlightAll()
 			} catch (err) {
