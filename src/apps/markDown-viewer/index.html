@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Markdown Viewer</title>
+	</head>
+	<body>
+		<script>
+			async function starter() {
+				try {
+					let response = await require("files", "file")
+					document.querySelector("p").innerHTML = marked.parse(
+						await response.file.text()
+					)
+				} catch (err) {
+					self.close()
+				}
+				// console.log(response)
+			}
+			starter()
+		</script>
+		<p>Waiting for get a file</p>
+		<script src="./marked.min.js"></script>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+		</style>
+		<style>
+			body {
+				background-color: #eee;
+			}
+			* {
+				font-family: Nunito !important;
+				/* background-color: #eeee; */
+				/* color: #222; */
+				color: #222;
+			}
+		</style>
+	</body>
+</html>

@@ -14,7 +14,8 @@ export var appsToLoad = [
 // "example", 
 "files", 
 "image-viewer",
-"code-viewer"
+"code-viewer",
+"markDown-viewer"
 ]
 
 export async function importAppModule(name) {
