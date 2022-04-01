@@ -33,6 +33,8 @@ start.button.onclick = () => {
 		start.isOpened = true
 		return start.open()
 	}
+	// disable closing by clicking, so it have to hover out to close
+	return
 	start.close()
 	start.isOpened = false
 }
