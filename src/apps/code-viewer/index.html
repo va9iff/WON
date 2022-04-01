@@ -11,13 +11,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 </head>
 <body>
-<pre>
-<code class="language-js">
-// waiting for getting a file...
-document.querySelector("#myCode").innerHTML = file.code()
-</code>
-	</pre>
-
+<pre><code class="language-js">// waiting for getting a file...
+document.querySelector("#myCode").innerHTML = file.code()</code></pre>
 	<script>
 		async function s() {
 			try {
@@ -42,5 +37,11 @@ document.querySelector("#myCode").innerHTML = file.code()
 		s()
 	</script>
 	<script src="./prism.js"></script>
+		<style>
+		pre{
+			margin: 0 !important ;
+		}
+	</style>
+
 </body>
 </html>
