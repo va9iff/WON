@@ -122,6 +122,10 @@ export class Window {
 		this.TOP.style.zIndex = topZ++
 	}
 	addListeners() {
+		this.frame.contentWindow.addEventListener("click", () => this.bringForward())
+		this.TOP.addEventListener("mousedown", () => this.bringForward())
+		// console.log(this.frame)
+		
 		this.TOP.addEventListener("mousedown", () => this.bringForward())
 
 		// in the top window element, the only unique thing is its id.
