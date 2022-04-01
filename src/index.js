@@ -1,4 +1,5 @@
 import { Window } from "./windowing/window.js"
+import { start } from "./startMenu/startMenu.js"
 import { desktopIcon } from "./desktop/desktopIcons.js"
 import { APPS, launch, launchManual, openWith, loadApps, loadApp } from "./appsController.js"
 import {require} from "./WONfun.js"
@@ -25,7 +26,7 @@ async function starter() {
 	// onload overrides previously assigneds
 
 	// openWith("image-viewer","fasd asd asd asdf")
-	launch("code-viewer")
+	// launch("code-viewer")
 
 
 

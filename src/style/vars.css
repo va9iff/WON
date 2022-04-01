@@ -4,6 +4,8 @@
     --window-border: none;
     --iframe-pointer-event: auto;
     --startbar-height: 2.7rem;
+    --start-menu-background-color: hsla(271deg, 0%, 17%, 0.7);
+    --start-menu-background-color-hover: hsla(271deg, 0%, 27%, 0.7);
     --app-preview-size: 9rem;
     --app-previews-panel-padding: 1rem;
     --app-previews-panel-scrollbar-size: 15px;

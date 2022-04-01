@@ -10,7 +10,7 @@ html{
 }
 
 .back{
-	backdrop-filter: blur(8px);
+	/* backdrop-filter: blur(18px); */
 	background-color: #3332;
 	border: 1px solid #ededed22 !important;
 	width: 4rem;

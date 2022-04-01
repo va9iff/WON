@@ -1,0 +1,64 @@
+#startMenu{
+	z-index: 99999999;
+	background-color: var(--start-menu-background-color);
+	padding: 0.5rem;
+	position: absolute;
+	bottom: 100%;
+	/*min-width: 40%;*/
+	/*min-height: calc(70vh - var(--startbar-height));*/
+	/*display: none;*/
+	opacity: 0.0;
+	backdrop-filter: blur(7px);
+	transform: scale(0) translateX(-50%) translateY(50%);
+	transition-duration: 800ms;
+	/*transition-timing-function: cubic-bezier(1, 0.17, 0.51, 1.25);*/
+	transition-timing-function: cubic-bezier(0.05, 1.02, 0.14, 1.09);
+	/*pointer-events: none;*/
+	transform-origin:  bottom;
+	/*border-radius: 15rem;*/
+	border-radius: 5rem;
+	border: 1px solid #dddd;
+}
+
+#startMenu.opened{
+	border-radius: 0.3rem;
+	opacity: 1;
+	transform: scale(1.0) translate(10px, -10px);
+	box-shadow: -8px 8px 12px #111;
+
+}
+
+#startMenu:hover{
+	background-color: var(--start-menu-background-color-hover);
+}
+
+
+#startMenu>button{
+	/*padding: 0.4rem;*/
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius: 0.4rem;
+	border: none;
+	transition-duration: 200ms;
+
+	background-color: #eee;
+	background-repeat: no-repeat;
+	background-size: 80% 80%;
+	background-attachment: fixed;
+	background-position: center;
+}
+#startMenu>button:hover{
+	transform: translateY(-30%) scale(1.2);
+}
+#startMenu>button#powerButton{
+	background-image: url("../../imgs/power.svg");
+}
+
+#startMenu>button#fullScreen{
+	background-image: url("../../imgs/fullscreen2.svg");
+}
+
+#startMenu>button#restart{
+	background-image: url("../../imgs/restart.svg");
+	
+}

@@ -1,6 +1,7 @@
 body{
         /* for keeping sizes consistend and see if something goes overflow */
     /*overflow: scroll;*/
+    background-color: #222;
 
 }
 

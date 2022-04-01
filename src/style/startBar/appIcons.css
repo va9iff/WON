@@ -53,7 +53,7 @@
 }
 
 .appPreview {
-    background-color: hsl(250deg, 24%, 48%);
+    background-color: hsl(250deg, 20%, 50%);
     min-height: var(--app-preview-size);
     min-width: var(--app-preview-size);
 }

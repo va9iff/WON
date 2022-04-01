@@ -18,6 +18,7 @@ function resolver(win,arg,resFun){
 export function require(appName, req){
 	let prms = new Promise((res,rej)=>{
 		let win = launch("files")
+		win.position = [30,30]
 
 		// win.frame.contentWindow.resolve = {}
 
