@@ -1,3 +1,8 @@
+.windowTopBar:active .windowTopBarRight{
+    opacity: 0;
+	transition-duration: 200ms;
+}
+
 .windowTopBar:active~.windowContent{
     /* it's already set in windowcss */
     transform-origin: top;

@@ -1,9 +1,3 @@
-.window:active .windowTopBarRight{
-	opacity: 0;
-	transition-duration: 200ms;
-	/* background-color: red; */
-}
-
 .window:active::-webkit-resizer{
 	/*resize: none;*/
 	/*display: none;*/
