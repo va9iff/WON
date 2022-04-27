@@ -9,3 +9,25 @@
 /* #exampleNewApp{ */
     /* display: flex; */
 /* } */
+
+.previewCloseBtn{
+    transform-origin: top right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.4rem;
+    border: none;
+    background-color: #ddd;
+    border-radius: .7rem;
+    transform: translateX(1rem) translateY(0.2rem) scale(0.7);
+    transition-duration: 300ms;
+    z-index: 9999;
+    
+}
+
+.previewCloseBtn:hover{
+    transform: translateX(1rem) translateY(0.1rem) scale(1.0);
+    box-shadow: -1rem 1rem 0 0.12rem #333;
+}

@@ -148,6 +148,15 @@
 
 }
 
+/*.previewCloseBtn{*/
+    /*pointer-events: none;*/
+/*}*/
+.appPreview:hover{
+    /*pointer-events: all;*/
+    z-index: 9999;
+    position: relative;
+}
+
 .appPreview:hover {
     opacity: 1;
     transform: scale(1.2) !important; 
