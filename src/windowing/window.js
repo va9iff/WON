@@ -117,7 +117,7 @@ export class Window {
 		this.preview.remove()
 		refreshAppPreviewIcon(this.app)
 		if(this.frame.contentWindow.reject) this.frame.contentWindow.reject()
-		this.app.onClose()
+		if (this.app.onClose)this.app.onClose()
 	}
 	bringForward() {
 		this.TOP.style.zIndex = topZ++
