@@ -16,7 +16,8 @@ export var appsToLoad = [
 "image-viewer",
 "code-viewer",
 "markDown-viewer",
-"test-1"
+"test-1",
+"test-2"
 ]
 
 export async function importAppModule(name) {
@@ -37,7 +38,12 @@ export function appify(app){
 }
 
 function WONfunify(window){
-	window.frame.contentWindow.WON={}
+	window.frame.contentWindow.WON={
+		launch,
+		launchManual,
+		appify,
+		loadApp
+	}
 	window.frame.contentWindow.require=require
 
 }
