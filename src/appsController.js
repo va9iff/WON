@@ -17,7 +17,8 @@ export var appsToLoad = [
 "code-viewer",
 "markDown-viewer",
 "test-1",
-"test-2"
+"test-2",
+"make-it-real"
 ]
 
 export async function importAppModule(name) {
