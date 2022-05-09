@@ -2,7 +2,7 @@
 // const WONU = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location.search
 const WONU = window.location.href
 
-const repo = "WONOS"
+const repo = "WON"
 const user = "va9iff"
 const url  = `https://api.github.com/repos/${user}/${repo}/contents/`
 
