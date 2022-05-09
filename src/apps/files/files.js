@@ -1,6 +1,8 @@
 // const BASE = "http://127.0.0.1:8080/"
 // import {URL} from "../../api.js"
-const BASE = url //from api.js but it's not module
+// // const BASE = url //from api.js but it's not module
+import {use, repo} from "../../api.js"
+const BASE = `https://api.github.com/repos/${user}/${repo}/contents/`
 
 // reject()
 
