@@ -7,12 +7,12 @@ export default {
     icon: "$WON/src/apps/test-2/icon.svg",
     desktopIcon: true,
     onClose: function(){
+        for(let win of this.windows){
+            win.close()
+        }
         let _testwins = [...this.testwins]
         this.testwins = []
         for(let win of _testwins){
-            win.close()
-        }
-        for(let win of this.windows){
             win.close()
         }
 

@@ -12,6 +12,6 @@ while (self.app.testwins.length < 30){
 	]
 	setTimeout(()=>win.minimize(), Math.random()*self.app.windows.length*70+1200)
 	self.app.testwins.push(win)
-	console.log(self.app.testwins)
+	// console.log(self.app.testwins)
 
 }
