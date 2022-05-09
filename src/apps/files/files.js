@@ -121,8 +121,9 @@ async function refresh() {
 }
 
 function fileClick() {
-	this.style.paddingTop = "4rem"
-	this.style.paddingBottom = "4rem"
+	// this.style.paddingTop = "4rem"
+	// this.style.paddingBottom = "4rem"
+	this.style.transform = "scale(0.95)"
 	let path = this.innerHTML
 	currentPath.push(path)
 	refresh()

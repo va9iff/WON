@@ -42,6 +42,18 @@ html{
 	/*max-height: 4rem;*/
 	display: flex;
 	overflow: hidden;
+	animation-name: filesCome;
+	animation-duration: 300ms;
+	animation-timing-function: ease-out;
+}
+
+@keyframes filesCome{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
 }
 
 .file:hover{
